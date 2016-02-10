@@ -1,0 +1,254 @@
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{natbib}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[utf8]{inputenc}
+
+\title{System Requirements Specifications\\
+	\large Carspot for SE 3A04, Tutorial 2}
+    \author{
+         Yasaswi Gopalkrishnan\\ \newline
+         \and
+         Sharon Platkin \\ \newline
+         \and 
+         Abhijit Singh Dhoat\\ \newline
+         \and
+         Joseph Cole Huot\\ \newline
+         \and
+         David Eric Hemms\\ \newline
+         \and 
+         Yuchen Liu\\ \newline
+    }   
+    \date{Feburary 7th, 2016}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\listoftables
+\newpage
+
+\section{Team Contributions}
+\begin{table}[h!]
+\caption{Work Division}
+\begin{longtable}{ | l | c | c | p{4cm} |}
+	\hline
+	Team Member & Section Completed & Section Reviewed/Edited & Last Date Modified \\ \hline
+	Abhijit & 1,2.6 & 2 & February 4th, 2016\\ \hline
+	Cole & 3,2.1 & 1 & February 4th, 2016\\ \hline
+	David & 4(even), 2.4 & 3 & February 4th, 2016\\ \hline
+	Sharon & 3,2.2 & 1,2.6 & February 4th, 2016\\ \hline
+	Yash & 1, 2.3 & 4 & February 4th, 2016\\ \hline
+	Yuchen & 4(odd), 2.5 & 3 & February 4th, 2016\\ \hline
+\end{longtable}
+\end{table}
+\newpage
+
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this software requirement specification document is to notify the reader about the android application designed and programed by group 9 in SFWR 3A04 at McMaster University. This document contains information about the: purpose, scope, overall description, functional and non-functional requirements along with a division of labor. The primary audience for this document is individuals who have an understanding of android programming, specifically the members of group 9 and the 3A04 instructional staff. This document is subject to change until the project completion date as group 9 sees fit to best describe the current application they have designed.
+
+\subsection{Scope}
+The android app the team will be making is called 'Carspot'. The application will allow the user to identify a car they spot quickly by entering the characteristics they recognize. It will then search through a database using the minimum characteristics the user provides to narrow it down to a particular car. It will show the car's details and then show you the nearest car dealerships that sell that particular car. It will not show you any more details about the car as the app allows you to redirect to the dealerships website where you can search for something in particular. It also provides directions to the dealerships if necessary. The app does not do any image recognition as the name seems to imply; this is done because it is hard for the user to take a picture of a car that is on the move. The app is also limited to just the Hamilton area for the dealership listing.\\
+The application is designed to provide a better, faster and easier way for people to lookup a car they like and buy that car if they were already in the process of looking for one. It will be very intuitive to use with a very minimal user interface and a walkthrough-like user experience.
+\subsection{Definitons, Acronyms \& Abbreviations}
+\textbf{CI: Car Identifier} - The algorithm that searches the custom database for a car based on the characteristics specified by the user.\\
+\textbf{API: Application Program Interface} - External Service or Software we communicate with for certain data.\\
+\textbf{UI: User Interface} - How the application looks and feels on Android. It includes everything from the design to the branding.\\
+\textbf{UX: User Experience} - How the user interacts with the application.\\
+\textbf{Search Form - The set of characteristics that the user goes through to finalize the search criteria}
+\subsection{References}
+\textit{There are no documents that this SRS references but just a suite of resources that the app will use. Hence, the tools the team will use are listed below:}
+\begin{itemize}
+    \item \textbf{Tabris.js:} Native mobile app framework for Javascript (\url{https://tabrisjs.com/})
+    \item \textbf{Ionic:} Front-end SDK for mobile apps (\url{http://ionicframework.com/})
+    \item \textbf{React.js:} UI Framework (\url{https://facebook.github.io/react/})
+    \item \textbf{Github:} Version control and project management. Going to be used to host our project files. (href{https://github.com/})
+    \item \textbf{DigitalOcean:} Cloud Hosting. Used to host our databases possibly. (\url{https://www.digitalocean.com/})
+    \item \textbf{Codeship:} Continous Delivery \& Deployment. Will be used to pull code from Github and onto DigitalOcean servers and run tests. (\url{https://codeship.com/})
+    \item \textbf{Android SDK Docs:} Will be used to figure out how to leverage androids various system components and resources. (\url{http://developer.android.com/guide/index.html})
+\end{itemize}
+\subsection{Overview}
+This document will include an overall description of the application that will describe the basic functions and features of the application. It will also describe the main constraints, assumptions, and dependencies of the application. Along with business events, nonfunctional and functional requirements that the application fulfills. The software requirement specification document is by far one of the most crucial and useful documents throughout the design process and should be one of the most referenced documents throughout the design.
+
+\section{Overall Description}
+\subsection{Product Perspective}
+The product is a mobile application on the android platform. The application will require use of a database of car features in order to identify cars. Google maps will also need to be accessed to retrieve the locations of nearby car dealerships, and to give directions to the user. The websites of dealerships must be accessed as well to determine if they sell a specific car.
+\subsection{Product Functions}
+-The application will receive information about a car and will identify it\\
+-This application will be able to handle different amounts of information about a specific car to identify it by allowing the user to skip over questions\\
+-The application will provide the user with car dealerships information\\
+-The application will allow the user to skip sections they have no answer to\\
+-The application will provide the user with a list of dealerships\\
+-The application will give the option to sort the dealerships in either alphabetical order or by nearest location\\
+-The application will redirect you to the dealership website\\
+\subsection{User Characteristics}
+The users of the product will be the general consumer between the ages of 18 and 60. The user will have at least a high school education and should know how to use a smartphone to a reasonable degree. They are assumed to know how to use the camera and other functions. The target audience is someone who is interested in buying a car in the near future. The user's knowledge about cars is irrelevant, but it will be most useful for those who know only a bit or nothing about cars.
+\subsection{Constraints}
+- The application must be fully implemented and operational as specified by the project timeline.\\
+- The application is built to run on Android OS devices, and must be backwards compatible with older versions.
+\subsection{Assumptions \& Dependencies}
+\subsubsection{Factors that may affect the requirements stated in SRS}
+\begin{enumerate}
+    \item Vehicle market flow.
+    \item The changing of vehicle shop.
+    \item The technique spec change for some cars.
+    \item The knowledge of the user
+    \item The user's first language (for example: the same car, may have different name in English and French).
+    \item The currency exchange rate (for some imported cars).
+    \item The copyright of those vehicle sellers (if they agree we use their logo or other stuff in our application).
+\end{enumerate}
+
+\subsubsection{Environment Factors (Program Environment)}
+\begin{enumerate}
+    \item The version of Android.
+	\item The brand of the phones (Samsung, HTC, Huawei, etc).
+    \item The interface of the Google Map on the phone.
+	\item The version of Google Map on the phone.
+	\item If GPS location available on the device.
+	\item If the device can provide internet connection.
+\end{enumerate}
+
+\subsection{Apportioning of Requirements}
+Innovative/Creative Features
+
+The application has some delayed requirements which may be fulfilled at a later date.
+\begin{itemize}
+    \item The application should have a web portal, where users can log in and have similar functionality to the app using their web browsers.
+    \item The application should provide a system in which administrators can view the app as if they were a User, so they can understand what the User sees.
+\end{itemize}
+
+\section{Functional Requirements}
+\begin{enumerate}
+    \item BE: User Requests to identify a car
+    \begin{enumerate}
+        \item VP: User
+        \begin{enumerate}
+            \item The application will allow the user to input characteristics about the car in question
+            \item Application will give the option to skip and add optional characteristics
+        \end{enumerate}
+        \item VP: Application 
+        \begin{enumerate}
+            \item The application will identify car models based on the characteristics entered by the user, using a number of separate experts
+            \item The application will include a company logo expert, car type/class expert, number of passengers expert, and car model expert
+            \item The application will store the information about the identified car
+
+        \end{enumerate}
+    \end{enumerate}
+    \item BE: User requests to find nearby dealerships
+    \begin{enumerate}
+        \item VP: User
+        \begin{enumerate}
+            \item Application will ask the user if the correct car has been identified
+            \item The application will provide the user with all nearby dealerships which sell a selected car
+        \end{enumerate}
+        \item VP: Application
+        \begin{enumerate}
+            \item The application will use google maps to find nearby dealerships
+            \item Application will sort the list of dealerships given a category from the user (alphabetical, nearest distance)
+            \item The application will encrypt all transmitted messages using a cryptosystem
+        \end{enumerate}
+    \end{enumerate}
+    \item BE: User requests to see experts information
+    \begin{enumerate}
+        \item VP: User
+        \begin{enumerate}
+            \item The application will have a tab that shows all the information gathered by the experts
+
+        \end{enumerate}
+        \item VP: Application
+        \begin{enumerate}
+            \item The application must implement a centralized “Forum" which all experts provide their answer to. The “Forum" shall display the result(s) provided by the experts to the user.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\section{Non-Functional Requirements}
+\subsection{Look and Feel Requirements}
+\subsubsection{Appearance Requirements}
+LF1. The application shall be aesthetically pleasant to look at.\\
+LF2. The application shall have an intuitive and easy to use interface.
+\subsubsection{Style Requirements}
+LF3. The application shall be designed with a minimal look so it's more trustable and appealing
+\subsection{Usability and Humanity Requirements}
+\subsubsection{Ease of Use Requirements}
+UH1.  The application shall be easily usable by children as young as 12.\\
+UH2. The application shall be easy for any user to interact with, regardless of technological experience.\\
+UH3. The application interface shall be intuitive and easy to navigate.\\
+UH4. The application shall make users want to use it.
+\subsubsection{Personalization and Internationalization Requirements}
+not applicable as the app's scope is limited to Hamilton
+\subsubsection{Learning Requirements}
+UH5. Users shall be able to perform the application’s basic operation within a few minutes of first interacting with the application.\\
+UH6. The user of the application does not require any special knowledge prior to use.
+\subsubsection{Understandability and Politeness Requirements}
+UH7. The application shall use symbols and words easily understandable by the general public.
+\subsubsection{Accessibility Requirements}
+UH8. The application shall have the option to increase the size of the text so it's easily visible.
+\subsection{Performance Requirements}
+\subsubsection{Speed and Latency Requirements}
+PR1. The application shall respond to the user’s car attribute search query within 5 seconds.
+\subsubsection{Safety-Critical Requirements}
+not applicable
+\subsubsection{Precision or Accuracy Requirements}
+PR2. The application shall provide accurate information about each car and the closest dealership that the car is located at.\\
+PR3. Google Maps/Places API shall take the precise location of the device accessing the application for use in the application.
+\subsubsection{Reliability and Availability Requirements}
+PR4. The application shall be available for use while an Internet connection is present.
+\subsubsection{Capacity Requirements}
+not applicable
+\subsubsection{Scalability or Extensibility Requirements}
+PR5. The database containing cars and their identifiable attributes pertaining to the experts shall be easily scalable to accommodate a larger amount of cars that can be identified.
+\subsubsection{Longevity Requirements}
+not applicable
+\subsubsection{Robustness or Fault-Tolerance Requirements}
+PR6. The application shall be able to cope with erroneous input to the attributes field, being able to identify that no such car meets the attributes given.
+\subsection{Operational and Environmental Requirements}
+\subsubsection{Expected Physical Environment}
+OE1. The application will operate in any environment with connection to the Internet.\\
+OE2. The application shall be used in the city, where users will spot cars that they are interested in and want to identify.
+\subsection{Requirements for interfacing with Adjacent Systems}
+OE3. The application shall interface with Google Maps API.
+\subsection{Productization Requirements}
+\subsection{Release Requirements}
+\subsection{Maintainability \& Support Requirements}
+\subsubsection{Maintenance Requirements}
+MS1. The application shall be updated on an “as-needed” basis.\\
+MS2. The application shall be easily modifiable in the case that further features need to be implemented.
+\subsubsection{Supportability Requirements}
+not applicable
+\subsubsection{Adaptability Requirements}
+MS3. The application shall be backwards compatible on any Android OS.
+\subsection{Security Requirements}
+\subsubsection{Access Requirements}
+SR1. The application shall only allow authorized users to swap experts. Authorized users are those who enter the correct key phrase when prompted, once they initiate the swapping experts process.
+\subsubsection{Integrity Requirements}
+SR2. The application shall encrypt all transmitted messages between the experts and the forum.
+\subsubsection{Privacy Requirements}
+SR3. At this moment, the app does not need any personal information of the user to be able to perform a search on the car.\\
+SR4. The app shall clearly indicate to the user that their location needs to be accessed in order to provide accurate nearby dealership information.
+\subsubsection{Audit Requirements}
+n/a
+\subsubsection{Immunity Requirements}
+n/a
+\subsection{Cultural and Political Requirements}
+\subsubsection{Cultural}
+CP1. This application shall not use any text, images, or media that will offend anyone.
+\subsubsection{Political}
+CP2. This application shall be politically independent.
+\subsection{Legal Requirements}
+\subsubsection{Compliance}
+n/a
+\subsubsection{Standards}
+LR1. This application shall comply with any relevant standards associated with Android applications.\\
+LR2. The application shall hold no bias towards certain dealerships but show all dealerships as they are listed from the Google Places API.
+
+\end{document}
