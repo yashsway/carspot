@@ -132,41 +132,41 @@ This section should provide an overview of the overall architectural design of y
 \section{Class Responsibility Collaboration (CRC) Cards}
 \label{sec:class_responsibility_collaboration_crc_cards}
 % Begin Section
-This section should contain all of your CRC cards.
 
-\begin{enumerate}[a)]
-	\item Provide a CRC Card for each identified class
-	\item Please use the format outlined in tutorial, i.e., 
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarListing} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarDB} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Hold a listing of all cars models and types & CarSearch\\
-		Allow search by any of the expert categories in any combination & CarSearch \\
-		Allow insertion and deletion of multiple entries with some missing details & -\\
-		Allow editing of entries if needed & - \\
-		Allow caching of information from listing if needed & - \\
+		Contain a listing of all car models and their attributes & -\\
+		\hline
+		Allow insertion and deletion of entries & -\\
+		\hline
+		Allow editing of entries & - \\
+		\hline
+		Provide information to CarSearchController & CarSearchController \\
 		\hline
 		\end{tabular}
 	\end{table}
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackListing} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackStorage} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Hold a list of all feedback forms completed by users with anonymity & Feedback Manager\\
-	    Allow marking a feedback form listing as 'working on' & - \\
-	    Allow deleting entries & - \\
+		Contain a list of all feedback forms completed by users with anonymity, stored in a file & -\\
+		\hline
+	    Receive feedback from feedback form for storage & FeedbackForm\\
 		\hline
 		\end{tabular}
 	\end{table}
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
@@ -175,43 +175,32 @@ This section should contain all of your CRC cards.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Hold a list of all feedback forms completed by anonymous users by submission date & Feedback Manager\\
-	    Mark a listing as 'Working On' by swiping right & Forum\\
-	    Allow deleting entries by swiping left & Forum \\
-	    Allow user to send feedback on what they like or don't like and write a short 400 character description & FeedbackManager\\
+	    Allow user to enter feedback about the application & -\\
 		\hline
 		\end{tabular}
 	\end{table}
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} HelpInfo} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarSearchController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Hold a list of help articles by category & HelpPage\\
-	    Hold app tour steps \& info & HelpPage \\
+		Contains algorithm to identify a car given some attributes & -\\
+		\hline
+	    Extract information from the SearchForm and compile it into a search query & SearchForm\\
+	    \hline
+	    Send result of search to SearchResult for display and verification & SearchResult\\
+	    \hline
+	    Query car database and experts as part of search algorithm to identify the car & CarDB, Expert\\
+	    \hline
+	    Control experts to be used in identification based on attributes given & ExpertPicker\\
 		\hline
 		\end{tabular}
 	\end{table}
-	\begin{table}[ht]
-		\centering
-		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarSearch} \\
-		\hline
-		\textbf{Responsibility:} & \textbf{Collaborators:} \\
-		\hline
-		Use search algorithm to determine matches ranked by match percentage & CarListing\\
-	    Extract information from the SearchForm and compile it into a search query & CarSearch\\
-	    Extract data from a SearchHistory entry and reperform search & SearchHistory\\
-	    Send formatted search results to the SearchResult interface & SearchResult\\
-	    Send car search results to the Google Places API & - \\
-	    Based on categories the user picks, filter the cache in the background and prepare the scaffold for the search query & ExpertPicker,CarListing\\
-		\hline
-		\end{tabular}
-	\end{table}
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
@@ -220,10 +209,15 @@ This section should contain all of your CRC cards.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Show results after search query runs ordered by  & CarSearch,SearchForm\\
+		Receive search result and send it to the forum to be displayed  & Forum,CarSearchController\\
+		\hline
+		Once a car identification is confirmed, result sent to search history & SearchHistory\\
+		\hline
+		Send result for verification before sending to search history & ResultVerifier\\
 		\hline
 		\end{tabular}
 	\end{table}
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
@@ -232,13 +226,134 @@ This section should contain all of your CRC cards.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Extract all expert data sorted by category, format it and make a temporary data store available & CarSearch,SearchForm\\
-		Restart search query when prompted by the user that the results may not be right & CarSearch,ResultVerifier\\
+		Control which experts will be used to identify the car based on attributes that are inputted & Expert\\
+		\hline
+		Set experts to "passive" or "active" for identification process & Expert\\
 		\hline
 		\end{tabular}
 	\end{table}
 	
-\end{enumerate}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpPage} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Provide information about the application, and how to use it & -\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} Forum} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Central hub of application to allow navigation to various pages & SearchForm, SearchHistory, HelpPage, FeedbackForm\\
+			\hline
+			Display result of car identification & SearchResult\\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchForm} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Allow user to input characteristics of the car they want to identify & -\\
+			\hline
+			Send inputted attributes to car identification algorithm & CarSearchController\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchHistory} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Store previous five confirmed identification results & -\\
+			\hline
+			When a new result enters the history, pushes out fifth most recent confirmed identification & -\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} DealershipLocator} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Interface with Google Maps API to locate dealerships that sell a specific car from the search history & SearchHistory\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} SecurityController} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Contains encryption and decryption mechanisms for transmitted messages & -\\
+			\hline
+			Decrypt search result once it arrives at the forum & Forum\\
+			\hline
+			Encrypt the search result before sending it to the forum & SearchResult\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} ResultVerifier} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Provide the user with the ability to confirm or deny the identified car result & -\\
+			\hline
+			Restart car identification if identified car is incorrect & CarSearchController\\
+			\hline
+			Restart search form if the identified car is incorrect three times & CarSearchController, SearchForm\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline 
+			\multicolumn{2}{|l|}{\textbf{Class Name:} Expert} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Know potential car identifications given certain attribute combinations in respective domain of expertise & -\\
+			\hline
+			Provide expertise to identify a car given some attributes of its domain & CarSearchController\\
+			\hline
+			Provide functionality to be set as "active" or "passive" when trying to identify a car & ExpertPicker\\
+			\hline
+		\end{tabular}
+	\end{table}
 % End Section
 
 \FloatBarrier
@@ -246,7 +361,26 @@ This section should contain all of your CRC cards.
 \section{Division of Labour}
 \label{sec:division_of_labour}
 % Begin Section
-Include a Division of Labour sheet which indicates the contributions of each team member. This sheet must be signed by all team members.
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		\textbf{Team Member:} & \textbf{Sections Completed:}\\
+		\hline
+		Abhijit & Section 1, 4\\
+		\hline
+		Cole & Section 3, 4, Reviewed and Reworked Business Events\\
+		\hline
+		David & Section 3, 5, Reviewed and Reworked Business Events\\
+		\hline
+		Sharon & Section 2, 3, Reviewed and Reworked Business Events\\
+		\hline
+		Yash & Section 3, 5, Reviewed and Reworked Business Events\\
+		\hline
+		Yuchen & Section -\\
+		\hline
+	\end{tabular}
+\end{table}
 % End Section
 
 \newpage
