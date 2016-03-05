@@ -1,7 +1,8 @@
-\documentclass[]{article}
+\documentclass[12pt]{article}
 
 % Imported Packages
 %------------------------------------------------------------------------------
+\usepackage{placeins}
 \usepackage{amssymb}
 \usepackage{amstext}
 \usepackage{amsthm}
@@ -12,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage{extarrows}
 \usepackage{setspace}
+\usepackage[utf8]{inputenc}
 %------------------------------------------------------------------------------
 
 % Header and Footer
@@ -23,16 +25,33 @@
 
 % Title Details
 %------------------------------------------------------------------------------
-\title{Deliverable \#2 Template}
-\author{SE 3A04: Software Design II -- Large System Design}
-\date{}                               
+\title{Large System Design\\
+	\large Carspot for SE 3A04, Tutorial 2}
+    \author{
+         Yasaswi Gopalkrishnan\\ \newline
+         \and
+         Sharon Platkin \\ \newline
+         \and 
+         Abhijit Singh Dhoat\\ \newline
+         \and
+         Joseph Cole Huot\\ \newline
+         \and
+         David Eric Hemms\\ \newline
+         \and 
+         Yuchen Liu\\ \newline
+    }   
+    \date{Monday March 7th, 2016}                             
 %------------------------------------------------------------------------------
 
 % Document
 %------------------------------------------------------------------------------
 \begin{document}
 
-\maketitle	
+\maketitle
+\newpage
+\tableofcontents
+\listoftables
+\newpage	
 
 \section{Introduction}
 \label{sec:introduction}
@@ -122,11 +141,99 @@ This section should contain all of your CRC cards.
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline 
-		 \multicolumn{2}{|l|}{\textbf{Class Name:}} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarListing} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		\vspace{1in} & \\
+		Hold a listing of all cars models and types & CarSearch\\
+		Allow search by any of the expert categories in any combination & CarSearch \\
+		Allow insertion and deletion of multiple entries with some missing details & -\\
+		Allow editing of entries if needed & - \\
+		Allow caching of information from listing if needed & - \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackListing} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Hold a list of all feedback forms completed by users with anonymity & Feedback Manager\\
+	    Allow marking a feedback form listing as 'working on' & - \\
+	    Allow deleting entries & - \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackForm} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Hold a list of all feedback forms completed by anonymous users by submission date & Feedback Manager\\
+	    Mark a listing as 'Working On' by swiping right & Forum\\
+	    Allow deleting entries by swiping left & Forum \\
+	    Allow user to send feedback on what they like or don't like and write a short 400 character description & FeedbackManager\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} HelpInfo} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Hold a list of help articles by category & HelpPage\\
+	    Hold app tour steps \& info & HelpPage \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarSearch} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Use search algorithm to determine matches ranked by match percentage & CarListing\\
+	    Extract information from the SearchForm and compile it into a search query & CarSearch\\
+	    Extract data from a SearchHistory entry and reperform search & SearchHistory\\
+	    Send formatted search results to the SearchResult interface & SearchResult\\
+	    Send car search results to the Google Places API & - \\
+	    Based on categories the user picks, filter the cache in the background and prepare the scaffold for the search query & ExpertPicker,CarListing\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} SearchResult} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Show results after search query runs ordered by  & CarSearch,SearchForm\\
+		\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline 
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} ExpertPicker} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Extract all expert data sorted by category, format it and make a temporary data store available & CarSearch,SearchForm\\
+		Restart search query when prompted by the user that the results may not be right & CarSearch,ResultVerifier\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -134,6 +241,7 @@ This section should contain all of your CRC cards.
 \end{enumerate}
 % End Section
 
+\FloatBarrier
 \appendix
 \section{Division of Labour}
 \label{sec:division_of_labour}
