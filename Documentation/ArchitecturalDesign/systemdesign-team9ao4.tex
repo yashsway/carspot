@@ -99,7 +99,7 @@ This section should provide a use case diagram for your application.
 \section{Analysis Class Diagram}
 \label{sec:analysis_class_diagram}
 % Begin Section
-This section should provide an analysis class diagram for your application.
+\includegraphics[scale=0.65]{AnalysisClassDiagram.png}
 % End Section
 
 
@@ -114,8 +114,8 @@ This section should provide an overview of the overall architectural design of y
 \begin{enumerate}[a)]
 	\item The system is based on a blackboard architecture. There are four separate experts who can provide information independently using their expertise. Each expert identifies a different car property. A car search uses the information provided by the experts to search the car database, finding cars which have the identified properties.
 	\item This architecture structure works well for this system because it is a knowledge based system. Each expert can provide information which is then used to make a decision. Experts can also be added or removed very easily which gives the system flexibility. The experts are independent of one another, giving the system low coupling. An individual expert has one property which it will identify, giving high cohesion.
-	\item Structural architecture diagram of the system:
-	\includegraphics{Structural.png}
+	\item Structural architecture diagram of the system:\\
+	\includegraphics[scale=0.8]{Structural.png}
 \end{enumerate}
 % End SubSection
 
@@ -438,32 +438,11 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		Yash & Section 3, 5, Reviewed and Reworked Business Events\\
 		\hline
-		Yuchen & Section 4 Reviewed and Reworked Business Events\\
+		Yuchen & Section 4\\
 		\hline
 	\end{tabular}
 \end{table}
 % End Section
-
-\newpage
-\section*{IMPORTANT NOTES}
-\begin{itemize}
-%	\item You do \underline{NOT} need to provide a text explanation of each diagram; the diagram should speak for itself
-	\item Please document any non-standard notations that you may have used
-	\begin{itemize}
-		\item \emph{Rule of Thumb}: if you feel there is any doubt surrounding the meaning of your notations, document them
-	\end{itemize}
-	\item Some diagrams may be difficult to fit into one page
-	\begin{itemize}
-		\item It is OK if the text is small but please ensure that it is readable when printed
-		\item If you need to break a diagram onto multiple pages, please adopt a system of doing so and thoroughly explain how it can be reconnected from one page to the next; if you are unsure about this, please ask about it
-	\end{itemize}
-	\item Please submit the latest version of Deliverable 1 with Deliverable 2
-	\begin{itemize}
-		\item It does not have to be a freshly printed version; the latest marked version is OK
-	\end{itemize}
-	\item If you do \underline{NOT} have a Division of Labour sheet, your deliverable will \underline{NOT} be marked
-\end{itemize}
-
 
 \end{document}
 %------------------------------------------------------------------------------
