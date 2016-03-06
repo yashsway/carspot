@@ -112,10 +112,10 @@ This section should provide an overview of the overall architectural design of y
 \label{sub:system_architecture}
 % Begin SubSection
 \begin{enumerate}[a)]
-	\item Identify and explain the overall architecture of your system
-	\item Be sure to clearly state the name of the architecture
-	\item Provide the reasoning and justification of the choice
-	\item Provide a structural architecture diagram showing the relationship among the subsystems (if appropriate)
+	\item The system is based on a blackboard architecture. There are four separate experts who can provide information independently using their expertise. Each expert identifies a different car property. A car search uses the information provided by the experts to search the car database, finding cars which have the identified properties.
+	\item This architecture structure works well for this system because it is a knowledge based system. Each expert can provide information which is then used to make a decision. Experts can also be added or removed very easily which gives the system flexibility. The experts are independent of one another, giving the system low coupling. An individual expert has one property which it will identify, giving high cohesion.
+	\item Structural architecture diagram of the system:
+	\includegraphics{Structural.png}
 \end{enumerate}
 % End SubSection
 
@@ -123,7 +123,23 @@ This section should provide an overview of the overall architectural design of y
 \label{sub:subsystems}
 % Begin SubSection
 \begin{enumerate}[a)]
-	\item Provide a brief description of each subsystem. Be sure to document its purpose and relationship to other subsystems.
+	\item {\textbf{Blackboard Subsystems}}
+	\item Car Search:
+	\item This subsystem uses car properties provided by the experts to find car models in the database which have the provided properties.
+	\item {\textbf{Knowledge Source Subsystems}}
+	\item Car Type:
+	\item An expert which identifies the type of car (Sedan, SUV, Minivan, etc).
+	\item Company Logo:
+	\item An expert which identifies the company that made the car based on their logo.
+	\item Car Origin:
+	\item An expert which identifies the origin of the car (North American, European, etc).
+	\item Passenger Caoacity:
+	\item An expert which identifies the number of passengers the car can hold.
+	\item Database:
+	\item A database containing car models and their properties. The database can be searched to find models which fit certain criteria.
+	\item {\textbf{Controller Subsystem}}
+	\item Control:
+	\item This subsystem can initiate a car search and supervise the overall identification process.
 \end{enumerate}
 % End SubSection
 
@@ -422,7 +438,7 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		Yash & Section 3, 5, Reviewed and Reworked Business Events\\
 		\hline
-		Yuchen & Translated Section 4 into Latex\\
+		Yuchen & Section 4 Reviewed and Reworked Business Events\\
 		\hline
 	\end{tabular}
 \end{table}
