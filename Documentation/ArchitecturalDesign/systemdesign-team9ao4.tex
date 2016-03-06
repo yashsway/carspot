@@ -18,9 +18,9 @@
 
 % Header and Footer
 %------------------------------------------------------------------------------
-\pagestyle{plain}
-\renewcommand\headrulewidth{0.4pt}
-\renewcommand\footrulewidth{0.4pt}
+\pagestyle{plain}  
+\renewcommand\headrulewidth{0.4pt}                                      
+\renewcommand\footrulewidth{0.4pt}                                    
 %------------------------------------------------------------------------------
 
 % Title Details
@@ -31,16 +31,16 @@
          Yasaswi Gopalkrishnan\\ \newline
          \and
          Sharon Platkin \\ \newline
-         \and
+         \and 
          Abhijit Singh Dhoat\\ \newline
          \and
          Joseph Cole Huot\\ \newline
          \and
          David Eric Hemms\\ \newline
-         \and
+         \and 
          Yuchen Liu\\ \newline
-    }
-    \date{Monday March 7th, 2016}
+    }   
+    \date{Monday March 7th, 2016}                             
 %------------------------------------------------------------------------------
 
 % Document
@@ -51,7 +51,7 @@
 \newpage
 \tableofcontents
 \listoftables
-\newpage
+\newpage	
 
 \section{Introduction}
 \label{sec:introduction}
@@ -80,7 +80,7 @@ This section should provide an brief overview of the entire document.
 \label{sub:overview}
 % Begin SubSection
 \begin{enumerate}[a)]
-	\item Describe what the rest of the document contains
+	\item Describe what the rest of the document contains 
 	\item Explain how the document is organised
 \end{enumerate}
 % End SubSection
@@ -90,9 +90,9 @@ This section should provide an brief overview of the entire document.
 \section{Use Case Diagram}
 \label{sec:use_case_diagram}
 % Begin Section
-This section should provide a use case diagram for your application.
+This section should provide a use case diagram for your application. 
 \begin{enumerate}[a)]
-	\item Each use case appearing in the diagram should be accompanied by a text description.
+	\item Each use case appearing in the diagram should be accompanied by a text description. 
 \end{enumerate}
 % End Section
 
@@ -113,9 +113,11 @@ This section should provide an overview of the overall architectural design of y
 % Begin SubSection
 \begin{enumerate}[a)]
 	\item The system is based on a blackboard architecture. There are four separate experts who can provide information independently using their expertise. Each expert identifies a different car property. A car search uses the information provided by the experts to search the car database, finding cars which have the identified properties.
-	\item This architecture structure works well for this system because it is a knowledge based system. Each expert can provide information which is then used to make a decision. Experts can also be added or removed very easily which gives the system flexibility. The experts are independent of one another, giving the system low coupling. An individual expert has one property which it will identify, giving high cohesion.
+	\par
+	This architecture structure works well for this system because it is a knowledge based system. Each expert can provide information which is then used to make a decision. Experts can also be added or removed very easily which gives the system flexibility. The experts are independent of one another, giving the system low coupling. An individual expert has one property which it will identify, giving high cohesion.
 	\item Structural architecture diagram of the system:
-	\includegraphics{Structural.png}
+	\par
+	\includegraphics[width=\textwidth]{Structural.png}
 \end{enumerate}
 % End SubSection
 
@@ -124,27 +126,27 @@ This section should provide an overview of the overall architectural design of y
 % Begin SubSection
 \begin{enumerate}[a)]
 	\item {\textbf{Blackboard Subsystems}}
-	\item Car Search:
-	\item This subsystem uses car properties provided by the experts to find car models in the database which have the provided properties.
+	\par Car Search:
+	\par This subsystem uses car properties provided by the experts to find car models in the database which have the provided properties.
 	\item {\textbf{Knowledge Source Subsystems}}
-	\item Car Type:
-	\item An expert which identifies the type of car (Sedan, SUV, Minivan, etc).
-	\item Company Logo:
-	\item An expert which identifies the company that made the car based on their logo.
-	\item Car Origin:
-	\item An expert which identifies the origin of the car (North American, European, etc).
-	\item Passenger Caoacity:
-	\item An expert which identifies the number of passengers the car can hold.
-	\item Database:
-	\item A database containing car models and their properties. The database can be searched to find models which fit certain criteria.
+	\par Car Type:
+	\par An expert which identifies the type of car (Sedan, SUV, Minivan, etc).
+	\par Company Logo:
+	\par An expert which identifies the company that made the car based on their logo.
+	\par Car Origin:
+	\par An expert which identifies the origin of the car (North American, European, etc).
+	\par Passenger Caoacity:
+	\par An expert which identifies the number of passengers the car can hold.
+	\par Database:
+	\par A database containing car models and their properties. The database can be searched to find models which fit certain criteria.
 	\item {\textbf{Controller Subsystem}}
-	\item Control:
-	\item This subsystem can initiate a car search and supervise the overall identification process.
+	\par Control:
+	\par This subsystem can initiate a car search and supervise the overall identification process.
 \end{enumerate}
 % End SubSection
 
 % End Section
-
+	
 \section{Class Responsibility Collaboration (CRC) Cards}
 \label{sec:class_responsibility_collaboration_crc_cards}
 % Begin Section
@@ -152,7 +154,7 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarDB} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -163,15 +165,15 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		Allow editing of entries & - \\
 		\hline
-		Provide information to CarSearchController in any combination & CarSearchController \\
+		Provide information to CarSearchController & CarSearchController \\
 		\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackStorage} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -180,46 +182,26 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 	    Receive feedback from feedback form for storage & FeedbackForm\\
 		\hline
-		Allow deletion of entries & - \\
-		\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackForm} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-	    Allow user to enter feedback about what they like or don't like about the application & -\\
-		\hline
-
-		\end{tabular}
-	\end{table}
-
-	\begin{table}[ht]
-		\centering
-		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackListing} \\
-		\hline
-		\textbf{Responsibility:} & \textbf{Collaborators:} \\
-		\hline
-	    Hold all feedback forms completed by users sorted by submission date & -\\
-	    \hline
-	    Allow marking a listing as 'Working on' by swiping right & Forum \\
-		\hline
-		Allow deleting a listing by swiping left & Forum\\
+	    Allow user to enter feedback about the application & -\\
 		\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarSearchController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -240,7 +222,7 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} SearchResult} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -251,15 +233,13 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		Send result for verification before sending to search history & ResultVerifier\\
 		\hline
-		Send car data for a specific result to Google Maps API if requested & DealershipLocator\\
-		\hline
 		\end{tabular}
 	\end{table}
 
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} ExpertPicker} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -270,29 +250,16 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
-			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpInfo} \\
-			\hline
-			\textbf{Responsibility:} & \textbf{Collaborators:} \\
-			\hline
-			Hold a list of help articles by category & - \\
-			\hline
-		\end{tabular}
-	\end{table}
-
-	\begin{table}[ht]
-		\centering
-		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpPage} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Extract help info on how to use the application from the database & HelpInfo\\
+			Provide information about the application, and how to use it & -\\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -300,7 +267,7 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} Forum} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -311,11 +278,11 @@ This section should provide an overview of the overall architectural design of y
 			\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchForm} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -330,14 +297,14 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchHistory} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
 			Store previous five confirmed identification results & -\\
 			\hline
-			When a new result enters the history, pushes out (deletes) fifth most recent confirmed identification & -\\
+			When a new result enters the history, pushes out fifth most recent confirmed identification & -\\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -345,26 +312,20 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} DealershipLocator} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
 			Interface with Google Maps API to locate dealerships that sell a specific car from the search history & SearchHistory\\
 			\hline
-			Embed google maps with pins on dealerships, based on the car sent by the SearchResult class & SearchResult\\
-			\hline
-			Allow editing the range of the search & - \\
-		    \hline
-		    Allow searching around custom location & -\\
-		    \hline
 		\end{tabular}
 	\end{table}
 
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SecurityController} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -375,17 +336,13 @@ This section should provide an overview of the overall architectural design of y
 			\hline
 			Encrypt the search result before sending it to the forum & SearchResult\\
 			\hline
-			Encrypt the feedbackForms filled out by users & FeedbackForm\\
-			\hline
-			Send encrypted feedbackForm to storage & FeedbackStorage\\
-			\hline
 		\end{tabular}
 	\end{table}
 
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} ResultVerifier} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -402,7 +359,7 @@ This section should provide an overview of the overall architectural design of y
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline
+			\hline 
 			\multicolumn{2}{|l|}{\textbf{Class Name:} Expert} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -425,7 +382,7 @@ This section should provide an overview of the overall architectural design of y
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline
+		\hline 
 		\textbf{Team Member:} & \textbf{Sections Completed:}\\
 		\hline
 		Abhijit & Section 1, 4\\
@@ -438,7 +395,7 @@ This section should provide an overview of the overall architectural design of y
 		\hline
 		Yash & Section 3, 5, Reviewed and Reworked Business Events\\
 		\hline
-		Yuchen & Section 4 Reviewed and Reworked Business Events\\
+		Yuchen & Section 4, Reviewed and Reworked Business Events\\
 		\hline
 	\end{tabular}
 \end{table}
