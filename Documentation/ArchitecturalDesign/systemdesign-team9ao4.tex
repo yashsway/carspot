@@ -57,32 +57,24 @@
 \label{sec:introduction}
 % Begin Section
 
-This section should provide an brief overview of the entire document.
-
 \subsection{Purpose}
 \label{sub:purpose}
 % Begin SubSection
-\begin{enumerate}[a)]
-	\item Delineate the purpose of the document
-	\item Specify the intended audience for the document
-\end{enumerate}
+
+The purpose of this document is to provide an outline of the entire system of the android application. The diagrams used in this document identify all main elements and components of the system. The intended audiences for this document are software engineers who intended to work on 3A04 android application project and their instructional staff. The document may be edited if any changes took place on the software requirements specification document.
+
 % End SubSection
 
 \subsection{System Description}
 \label{sub:system_description}
 % Begin SubSection
-\begin{enumerate}[a)]
-	\item Give a brief description of the system. This could be a paragraph or two to give some context to this document.
-\end{enumerate}
+The system is intended to make information available digitally to any device running android OS. Patients will be able to identify colour, view basic information, be notified of nearby dealerships and variety of cars they have. The user will be able to look up data including year, model and make of the car. 
 % End SubSection
 
 \subsection{Overview}
 \label{sub:overview}
 % Begin SubSection
-\begin{enumerate}[a)]
-	\item Describe what the rest of the document contains 
-	\item Explain how the document is organised
-\end{enumerate}
+The document contains information about the architectural design of the product. This includes information about the product’s use cases and classes through various diagrams. Diagrams include a use case diagram, an analysis class diagram, the architectural design diagram, and class responsibility collaboration cards. A depiction of the objects, attributes, and relationships is explained as well as an explanation of the interactions of dataflow between objects. Furthermore, responsibilities of and collaborators to classes have been stated in the document. The last part of the document is the division of labor that used to declare how the group members collaborated to get this document done.
 % End SubSection
 
 % End Section
@@ -90,10 +82,28 @@ This section should provide an brief overview of the entire document.
 \section{Use Case Diagram}
 \label{sec:use_case_diagram}
 % Begin Section
-This section should provide a use case diagram for your application. 
-\begin{enumerate}[a)]
-	\item Each use case appearing in the diagram should be accompanied by a text description. 
-\end{enumerate}
+
+	\includegraphics[scale=0.8]{UseCase.png}
+	\begin{enumerate}[i)]
+	\item Input : The user will input information about the car in question. The system will allow the user to navigate through the application using buttons and provide the application with information using text boxes. 
+
+	\item Session: When a user opens the application, a session is started. During a session, the process for identify a car and locating leaderships begins. A list of recent identified cars is saved. The session ends when the application is closed, or if the user wishes to start the process over. 
+
+	\item Operation: This is an abstract use case. It extends and includes different operations that the application will perform for the user. These entail: Swap experts, Verify result, Identify car, Locate dealership, Sort dealerships, Provide feedback
+
+	\item Modify experts: Will add/remove/swap experts in and out of the identifier questioner. 
+
+	\item Verify result: The result that the application came up with will be verified or denied. If denied, application will promt to re-assess the information given and experts used.
+
+	\item Identify car: User will inform application that they are done inputting information. Using all the information inputted, the application will attempt to identify the correct car. 
+
+	\item Locate dealership: Dealerships that have the identified car in their database will be listed with information about them.
+
+	\item Sort dealerships: Sort the dealership based on user's request. The dealerships will be sorted by alphabetical order or shortest distance.
+
+	\item Provide feedback: Feedback will be provided by the user and sent to the developer.
+
+	\end{enumerate}
 % End Section
 
 \section{Analysis Class Diagram}
@@ -134,7 +144,7 @@ This section should provide a use case diagram for your application.
 	\par An expert which identifies the company that made the car based on their logo.
 	\par Car Origin:
 	\par An expert which identifies the origin of the car (North American, European, etc).
-	\par Passenger Caoacity:
+	\par Passenger Capacity:
 	\par An expert which identifies the number of passengers the car can hold.
 	\par Database:
 	\par A database containing car models and their properties. The database can be searched to find models which fit certain criteria.
