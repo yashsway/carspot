@@ -18,9 +18,9 @@
 
 % Header and Footer
 %------------------------------------------------------------------------------
-\pagestyle{plain}  
-\renewcommand\headrulewidth{0.4pt}                                      
-\renewcommand\footrulewidth{0.4pt}                                    
+\pagestyle{plain}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
 %------------------------------------------------------------------------------
 
 % Title Details
@@ -31,16 +31,16 @@
          Yasaswi Gopalkrishnan\\ \newline
          \and
          Sharon Platkin \\ \newline
-         \and 
+         \and
          Abhijit Singh Dhoat\\ \newline
          \and
          Joseph Cole Huot\\ \newline
          \and
          David Eric Hemms\\ \newline
-         \and 
+         \and
          Yuchen Liu\\ \newline
-    }   
-    \date{Monday March 7th, 2016}                             
+    }
+    \date{Monday March 7th, 2016}
 %------------------------------------------------------------------------------
 
 % Document
@@ -51,7 +51,7 @@
 \newpage
 \tableofcontents
 \listoftables
-\newpage	
+\newpage
 
 \section{Introduction}
 \label{sec:introduction}
@@ -68,7 +68,8 @@ The purpose of this document is to provide an outline of the entire system of th
 \subsection{System Description}
 \label{sub:system_description}
 % Begin SubSection
-The system is intended to make information available digitally to any device running android OS. Patients will be able to identify colour, view basic information, be notified of nearby dealerships and variety of cars they have. The user will be able to look up data including year, model and make of the car. 
+The system will be made available to the general public through the Google Play Store on the Android Operating System. Users will download and use the app to identify cars they spot in their day to day lives. \\
+The user will be prompted by the system to pick from a set of categories they recognize. They will pick 3 of the these: car type, a logo, number of passengers or origin. The system will then search based on the information the user provides. Once the system has successfully run the search algorithm, it will present the user with the name, model, make and a small picture of the car. It will present multiple results ordered by match percentage. The user can then select a result and then search for local dealerships in an area that sell the car, or re-perform the search. The system will also hold a history of the 5 recent searches.
 % End SubSection
 
 \subsection{Overview}
@@ -85,17 +86,17 @@ The document contains information about the architectural design of the product.
 
 	\includegraphics[scale=0.8]{UseCase.png}
 	\begin{enumerate}[i)]
-	\item Input : The user will input information about the car in question. The system will allow the user to navigate through the application using buttons and provide the application with information using text boxes. 
+	\item Input : The user will input information about the car in question. The system will allow the user to navigate through the application using buttons and provide the application with information using text boxes.
 
-	\item Session: When a user opens the application, a session is started. During a session, the process for identify a car and locating leaderships begins. A list of recent identified cars is saved. The session ends when the application is closed, or if the user wishes to start the process over. 
+	\item Session: When a user opens the application, a session is started. During a session, the process for identify a car and locating leaderships begins. A list of recent identified cars is saved. The session ends when the application is closed, or if the user wishes to start the process over.
 
 	\item Operation: This is an abstract use case. It extends and includes different operations that the application will perform for the user. These entail: Swap experts, Verify result, Identify car, Locate dealership, Sort dealerships, Provide feedback
 
-	\item Modify experts: Will add/remove/swap experts in and out of the identifier questioner. 
+	\item Modify experts: Will add/remove/swap experts in and out of the identifier questioner.
 
 	\item Verify result: The result that the application came up with will be verified or denied. If denied, application will promt to re-assess the information given and experts used.
 
-	\item Identify car: User will inform application that they are done inputting information. Using all the information inputted, the application will attempt to identify the correct car. 
+	\item Identify car: User will inform application that they are done inputting information. Using all the information inputted, the application will attempt to identify the correct car.
 
 	\item Locate dealership: Dealerships that have the identified car in their database will be listed with information about them.
 
@@ -155,7 +156,7 @@ The document contains information about the architectural design of the product.
 % End SubSection
 
 % End Section
-	
+
 \section{Class Responsibility Collaboration (CRC) Cards}
 \label{sec:class_responsibility_collaboration_crc_cards}
 % Begin Section
@@ -163,7 +164,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarDB} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -178,11 +179,11 @@ The document contains information about the architectural design of the product.
 		\hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackStorage} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -193,11 +194,11 @@ The document contains information about the architectural design of the product.
 		\hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackForm} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -206,11 +207,11 @@ The document contains information about the architectural design of the product.
 		\hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} CarSearchController} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -231,7 +232,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} SearchResult} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -248,7 +249,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		 \multicolumn{2}{|l|}{\textbf{Class Name:} ExpertPicker} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -259,11 +260,11 @@ The document contains information about the architectural design of the product.
 		\hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpPage} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -276,7 +277,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} Forum} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -287,11 +288,11 @@ The document contains information about the architectural design of the product.
 			\hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchForm} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -306,7 +307,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SearchHistory} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -321,7 +322,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} DealershipLocator} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -334,7 +335,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} SecurityController} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -351,7 +352,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} ResultVerifier} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -368,7 +369,7 @@ The document contains information about the architectural design of the product.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
-			\hline 
+			\hline
 			\multicolumn{2}{|l|}{\textbf{Class Name:} Expert} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
@@ -391,7 +392,7 @@ The document contains information about the architectural design of the product.
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{|p{5cm}|p{5cm}|}
-		\hline 
+		\hline
 		\textbf{Team Member:} & \textbf{Sections Completed:}\\
 		\hline
 		Abhijit & Section 1, 4\\
@@ -400,11 +401,11 @@ The document contains information about the architectural design of the product.
 		\hline
 		David & Section 3, 5, Reviewed and Reworked Business Events\\
 		\hline
-		Sharon & Section 2, 3, Reviewed and Reworked Business Events\\
+		Sharon & Section 2, 3, Reviewed and Reworked Business Events, Revised Section 1\\
 		\hline
-		Yash & Section 3, 5, Reviewed and Reworked Business Events\\
+		Yash & Section 3, 5, Reviewed and Reworked Business Events, Revised Section 1\\
 		\hline
-		Yuchen & Section 4\\
+		Yuchen & Compiled Section 4 into tex, Reviewed Section 4\\
 		\hline
 	\end{tabular}
 	\caption{Division of Labour}
