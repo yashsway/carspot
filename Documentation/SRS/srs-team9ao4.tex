@@ -5,6 +5,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{caption}
 \usepackage{longtable}
 \usepackage{tabularx}
 \usepackage{hyperref}
@@ -26,7 +27,7 @@
          \and 
          Yuchen Liu\\ \newline
     }   
-    \date{Feburary 7th, 2016}
+    \date{March 7th, 2016}
 
 \begin{document}
 
@@ -36,20 +37,31 @@
 \listoftables
 \newpage
 
-\section{Team Contributions}
+
+\begin{table}[h!]
+\caption{Revision History}
+\begin{longtable}{ | l | c | p{4cm} |}
+	\hline	
+	Revision & Date & Sections Modified\\ \hline
+	Revision 0 & February 7th & - \\ \hline
+	Revision 1 & March 7th & Section 3 - Functional Requirements \\ \hline
+\end{longtable}
+\end{table}
+
 \begin{table}[h!]
 \caption{Work Division}
 \begin{longtable}{ | l | c | c | p{4cm} |}
 	\hline
 	Team Member & Section Completed & Section Reviewed/Edited & Last Date Modified \\ \hline
 	Abhijit & 1,2.6 & 2 & February 4th, 2016\\ \hline
-	Cole & 3,2.1 & 1 & February 4th, 2016\\ \hline
+	Cole & 3,2.1 & 1 & March 5th, 2016\\ \hline
 	David & 4(even), 2.4 & 3 & February 4th, 2016\\ \hline
-	Sharon & 3,2.2 & 1,2.6 & February 4th, 2016\\ \hline
+	Sharon & 3,2.2 & 1,2.6 & March 5th, 2016\\ \hline
 	Yash & 1, 2.3 & 4 & February 4th, 2016\\ \hline
 	Yuchen & 4(odd), 2.5 & 3 & February 4th, 2016\\ \hline
 \end{longtable}
 \end{table}
+
 \newpage
 
 \section{Introduction}
@@ -128,47 +140,96 @@ The application has some delayed requirements which may be fulfilled at a later 
 
 \section{Functional Requirements}
 \begin{enumerate}
-    \item BE: User Requests to identify a car
+    \item BE: User wants to identify car
     \begin{enumerate}
         \item VP: User
         \begin{enumerate}
-            \item The application will allow the user to input characteristics about the car in question
-            \item Application will give the option to skip and add optional characteristics
+            \item The user will enter relevant attributes from the domains of the experts about the car that they want to identify into the application.
         \end{enumerate}
-        \item VP: Application 
+        \item VP: Developer
         \begin{enumerate}
-            \item The application will identify car models based on the characteristics entered by the user, using a number of separate experts
-            \item The application will include a company logo expert, car type/class expert, number of passengers expert, and car model expert
-            \item The application will store the information about the identified car
+            \item The application will implement three distinct experts in the forum.
+            \item An expert, given sufficient information according to its expertise will identify the car in question, and provide an answer to the forum.
+        \end{enumerate}
+    \end{enumerate}
+    
+	\item BE: User wants to swap experts
+	\begin{enumerate}
+		\item VP: User:
+		\begin{enumerate}
+			\item The user shall be able to swap experts to cater to known attributes about the car.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item If current experts incorrectly identify car three times, the application will force one expert to be swapped out.
+			\item The application shall have one expert  on standby that can be swapped into the forum when needed.
+			\item Experts shall be chosen before the search attributes are entered into the application.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item BE: User wants to  verify result of search 
+	\begin{enumerate}
+		\item VP: User
+		\begin{enumerate}
+			\item The user will be able to confirm or deny the result of the car identification in the forum.
+			\item If the result is denied three times, the user will be prompted to re-enter the car attributes.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item If the result is incorrect, the application will attempt to re-identify the car, knowing that it is not the car that was just shown.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item BE: User wants to find dealerships that sell the correctly  identified car
+		\begin{enumerate}
+		\item VP: User
+		\begin{enumerate}
+			\item Nearby dealerships that sell the identified car will be displayed.
+			\item The list of dealerships will be sortable based on a specified category by the user such as alphabetical order or shortest distance.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item Google maps shall be used to locate nearby dealerships that sell an identified car.
+		\end{enumerate}
+	\end{enumerate}
 
-        \end{enumerate}
-    \end{enumerate}
-    \item BE: User requests to find nearby dealerships
-    \begin{enumerate}
-        \item VP: User
-        \begin{enumerate}
-            \item Application will ask the user if the correct car has been identified
-            \item The application will provide the user with all nearby dealerships which sell a selected car
-        \end{enumerate}
-        \item VP: Application
-        \begin{enumerate}
-            \item The application will use google maps to find nearby dealerships
-            \item Application will sort the list of dealerships given a category from the user (alphabetical, nearest distance)
-            \item The application will encrypt all transmitted messages using a cryptosystem
-        \end{enumerate}
-    \end{enumerate}
-    \item BE: User requests to see experts information
-    \begin{enumerate}
-        \item VP: User
-        \begin{enumerate}
-            \item The application will have a tab that shows all the information gathered by the experts
+	\item BE: User wants to learn more about the app
+		\begin{enumerate}
+		\item VP: User
+		\begin{enumerate}
+			\item The user will be able to access a page containing information about the application.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item The help page must be a page containing information about the application, incuding how to use it and developer information.
+		\end{enumerate}
+	\end{enumerate}
 
-        \end{enumerate}
-        \item VP: Application
-        \begin{enumerate}
-            \item The application must implement a centralized “Forum" which all experts provide their answer to. The “Forum" shall display the result(s) provided by the experts to the user.
-        \end{enumerate}
-    \end{enumerate}
+	\item BE: User wants to review previously identified cars
+	\begin{enumerate}
+		\item VP: User.
+		\begin{enumerate}
+			\item The user will be able to access a list of the five most recently confirmed car identifications.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item A newly confirmed search will push out the fifth most recent confirmed search. 
+		\end{enumerate}
+	\end{enumerate}
+
+	\item BE: User wants to provide feedback on the app
+	\begin{enumerate}
+		\item VP: User
+		\begin{enumerate}
+			\item The user shall be able to provide a short 150 word feedback response to the administrator.
+			\item User will also be able to specify whether it is positive or negative feedback.
+		\end{enumerate}
+		\item VP: Developer
+		\begin{enumerate}
+			\item A list of feedback from users will be displayed in a list format. The entries will be anonymous.    
+		\end{enumerate}
+	\end{enumerate}
+    
 \end{enumerate}
 
 \section{Non-Functional Requirements}
