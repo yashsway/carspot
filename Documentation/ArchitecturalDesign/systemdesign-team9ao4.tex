@@ -61,22 +61,21 @@
 \label{sub:purpose}
 % Begin SubSection
 
-	The purpose of this document is to provide an outline of the entire system of the android application. The diagrams used in this document identify all main elements and components of the system. The intended audiences for this document are software engineers who intended to work on 3A04 android application project and their instructional staff. The document may be edited if any changes took place on the software requirements specification document.
+The purpose of this document is to provide an outline of the entire system of the android application. The diagrams used in this document identify all main elements and components of the system. The intended audiences for this document are software engineers who intended to work on 3A04 android application project and their instructional staff. The document may be edited if any changes took place on the software requirements specification document.
 
 % End SubSection
 
 \subsection{System Description}
 \label{sub:system_description}
 % Begin SubSection
-	The system will be made available to the general public through the Google Play Store on the Android Operating System. Users will download and use the app to identify cars they spot in their day to day lives. 
-
-	The user will be prompted by the system to pick from a set of categories they recognize. They will pick 3 of the these: car type, a logo, number of passengers or origin. The system will then search based on the information the user provides. Once the system has successfully run the search algorithm, it will present the user with the name, model, make and a small picture of the car. It will present multiple results ordered by match percentage. The user can then select a result and then search for local dealerships in an area that sell the car, or re-perform the search. The system will also hold a history of the 5 recent searches.
+The system will be made available to the general public through the Google Play Store on the Android Operating System. Users will download and use the app to identify cars they spot in their day to day lives. \\
+The user will be prompted by the system to pick from a set of categories they recognize. They will pick 3 of the these: car type, a logo, number of passengers or origin. The system will then search based on the information the user provides. Once the system has successfully run the search algorithm, it will present the user with the name, model, make and a small picture of the car. It will present multiple results ordered by match percentage. The user can then select a result and then search for local dealerships in an area that sell the car, or re-perform the search. The system will also hold a history of the 5 recent searches.
 % End SubSection
 
 \subsection{Overview}
 \label{sub:overview}
 % Begin SubSection
-	The document contains information about the architectural design of the application CarSpot. Various diagrams were used to portray this information. These include a use case diagram, an analysis class diagram, the architectural design diagram, and class responsibility collaboration cards. A depiction of the objects, attributes, and relationships is explained as well as an explanation of the interactions of data flow between objects. Furthermore, responsibilities of and collaborators to classes have been stated in the document. The last part of the document is the division of labour that used to declare how the group members collaborated to produce this document.
+The document contains information about the architectural design of the product. This includes information about the product’s use cases and classes through various diagrams. Diagrams include a use case diagram, an analysis class diagram, the architectural design diagram, and class responsibility collaboration cards. A depiction of the objects, attributes, and relationships is explained as well as an explanation of the interactions of dataflow between objects. Furthermore, responsibilities of and collaborators to classes have been stated in the document. The last part of the document is the division of labor that used to declare how the group members collaborated to get this document done.
 % End SubSection
 
 % End Section
@@ -111,7 +110,7 @@
 \section{Analysis Class Diagram}
 \label{sec:analysis_class_diagram}
 % Begin Section
-\includegraphics[scale=0.65]{AnalysisClassDiagram.png}
+\includegraphics[scale=0.65]{analysisclass.png}
 % End Section
 
 
@@ -200,11 +199,13 @@
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 		\hline
-		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackForm} \\
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackFormProcessor} \\
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
 	    Allow user to enter feedback about the application & -\\
+		\hline
+		Send raw data for encryption and storage & SecurityController\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -227,6 +228,8 @@
 	    \hline
 	    Control experts to be used in identification based on attributes given & ExpertPicker\\
 		\hline
+		Restart search if requested by the user after a previous result & SearchResult\\
+		\hline
 		\end{tabular}
 	\end{table}
 
@@ -240,9 +243,9 @@
 		\hline
 		Receive search result and send it to the forum to be displayed  & Forum,CarSearchController\\
 		\hline
-		Once a car identification is confirmed, result sent to search history & SearchHistory\\
+		Once a car identification is confirmed, send result data to search history & SearchHistory\\
 		\hline
-		Send result for verification before sending to search history & ResultVerifier\\
+		Send search result to verifier if requested & ResultVerifier\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -255,9 +258,11 @@
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Control which experts will be used to identify the car based on attributes that are inputted & Expert\\
+		Control which experts will be used to identify the car based on attributes that are inputted & Logo,CarType,Origin and NumberOfPassengers\\
 		\hline
-		Set experts to "passive" or "active" for identification process & Expert\\
+		Set experts to "passive" or "active" for identification process & Logo,CarType,Origin and NumberOfPassengers\\
+		\hline
+		Extract relevant data based on the request sent by the search & CarSearchController\\
 		\hline
 		\end{tabular}
 	\end{table}
@@ -266,11 +271,13 @@
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 			\hline
-			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpPage} \\
+			\multicolumn{2}{|l|}{\textbf{Class Name:} HelpPageRequest} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Provide information about the application, and how to use it & -\\
+			Provide information about the application, and how to use it & Forum\\
+			\hline
+			Extract necessary information from the database based on the request & HelpInfo\\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -283,7 +290,7 @@
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Central hub of application to allow navigation to various pages & SearchForm, SearchHistory, HelpPage, FeedbackForm\\
+			Central hub of application to allow navigation to various pages & SearchForm, SearchHistory, HelpPage, FeedbackForm and FeedbackListing\\
 			\hline
 			Display result of car identification & SearchResult\\
 			\hline
@@ -302,6 +309,8 @@
 			\hline
 			Send inputted attributes to car identification algorithm & CarSearchController\\
 			\hline
+			Update and save form data temporarily as necessary & Forum\\
+			\hline
 		\end{tabular}
 	\end{table}
 
@@ -313,7 +322,7 @@
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Store previous five confirmed identification results & -\\
+			Store previous five confirmed identification results & SearchResult\\
 			\hline
 			When a new result enters the history, pushes out fifth most recent confirmed identification & -\\
 			\hline
@@ -328,7 +337,7 @@
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Interface with Google Maps API to locate dealerships that sell a specific car from the search history & SearchHistory\\
+			Interface with Google Maps API to locate dealerships that sell a specific car from the search history & SearchHistory, SearchResult\\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -347,6 +356,8 @@
 			\hline
 			Encrypt the search result before sending it to the forum & SearchResult\\
 			\hline
+			Encrypt feedback sent by the user and send it to storage & FeedbackForm, FeedbackStorage\\
+			\hline
 		\end{tabular}
 	\end{table}
 
@@ -360,24 +371,67 @@
 			\hline
 			Provide the user with the ability to confirm or deny the identified car result & -\\
 			\hline
-			Restart car identification if identified car is incorrect & CarSearchController\\
+			Based on match percentage of search results, ask the user to verify them & SearchResult\\
 			\hline
-			Restart search form if the identified car is incorrect three times & CarSearchController, SearchForm\\
+			Restart car identification if identified car is incorrect & CarSearchController, SearchResult\\
 			\hline
 		\end{tabular}
 	\end{table}
-
+	
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|p{5cm}|p{5cm}|}
 			\hline
-			\multicolumn{2}{|l|}{\textbf{Class Name:} Expert} \\
+			\multicolumn{2}{|l|}{\textbf{Class Name:} Logo} \\
 			\hline
 			\textbf{Responsibility:} & \textbf{Collaborators:} \\
 			\hline
-			Know potential car identifications given certain attribute combinations in respective domain of expertise & -\\
+			Provide a set logos of manufacturers and their respective names if requested & ExpertPicker\\
 			\hline
-			Provide expertise to identify a car given some attributes of its domain & CarSearchController\\
+			Provide functionality to be set as "active" or "passive" when trying to identify a car & ExpertPicker\\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Class Name:} CarType} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Provide a set of car type names such as sedan, hatchback etc if requested & ExpertPicker\\
+			\hline
+			Provide functionality to be set as "active" or "passive" when trying to identify a car & ExpertPicker\\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Class Name:} Origin} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Provide a set of manufacturer regions such as Japanese, European, German etc if requested & ExpertPicker\\
+			\hline
+			Provide functionality to be set as "active" or "passive" when trying to identify a car & ExpertPicker\\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+			\hline
+			\multicolumn{2}{|l|}{\textbf{Class Name:} NumberOfPassengers} \\
+			\hline
+			\textbf{Responsibility:} & \textbf{Collaborators:} \\
+			\hline
+			Provide a set of possible passenger capacities from 1 up to 12 if requested & ExpertPicker\\
 			\hline
 			Provide functionality to be set as "active" or "passive" when trying to identify a car & ExpertPicker\\
 			\hline
@@ -387,6 +441,21 @@
 
 \FloatBarrier
 \appendix
+\section{Revision History}
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|p{2cm}|p{5cm}|p{3cm}|p{3cm}|}
+		\hline
+		\textbf{Revision} & \textbf{Sections Modified} & \textbf{Date Completed} & \textbf{Contributors}\\
+		\hline
+		Revision 1 & Section 3: Analysis Class Diagram & March 16th & Yash, David\\
+		\hline
+		Revision 2 & Section 3: Analysis Class Diagram, Section 5: CRC Cards & March 27th & Yash\\
+		\hline
+	\end{tabular}
+	\caption{Revision History}
+	\label{table:1}
+\end{table}
 \section{Division of Labour}
 \label{sec:division_of_labour}
 % Begin Section
@@ -406,7 +475,7 @@
 		\hline
 		Yash & Section 3, 5, Reviewed and Reworked Business Events, Revised Section 1\\
 		\hline
-		Yuchen & Reviewed Section 4\\
+		Yuchen & Compiled Section 4 into tex, Reviewed Section 4\\
 		\hline
 	\end{tabular}
 	\caption{Division of Labour}
