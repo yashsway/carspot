@@ -25,7 +25,7 @@
 
 % Title Details
 %------------------------------------------------------------------------------
-\title{Large System Design\\
+\title{High-Level Architectural Design\\
 	\large Carspot for SE 3A04, Tutorial 2}
     \author{
          Yasaswi Gopalkrishnan\\ \newline
@@ -188,9 +188,28 @@ The document contains information about the architectural design of the product.
 		\hline
 		\textbf{Responsibility:} & \textbf{Collaborators:} \\
 		\hline
-		Contain a list of all feedback forms completed by users with anonymity, stored in a file & -\\
+		Send stored feedback if requested & securityController\\
 		\hline
-	    Receive feedback from feedback form for storage & FeedbackForm\\
+	    Receive encrypted feedback for storage & securityController\\
+		\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|p{5cm}|p{5cm}|}
+		\hline
+		 \multicolumn{2}{|l|}{\textbf{Class Name:} FeedbackListing} \\
+		\hline
+		\textbf{Responsibility:} & \textbf{Collaborators:} \\
+		\hline
+		Contain a list of all feedback forms completed by users with anonymity, stored in a file & FeedbackStorage\\
+		\hline
+	    Show feedback formatted to only show relevant information at first glance with details available on click & Forum\\
+		\hline
+		Show details of feedback on click of any feedback entry & Forum\\
+		\hline
+		Allow deletion of feedback entries by swiping left or by clicking delete in the feedback details view & Forum\\
 		\hline
 		\end{tabular}
 	\end{table}
