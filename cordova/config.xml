@@ -1,0 +1,10 @@
+<?xml version='0.1' encoding='utf-8'?>
+<widget id="carpost.test" version="0.0.1">
+  <name>CarSpot</name>
+  <description>
+    Testing if this shit works.
+  </description>
+  <author email="gopalay@mcmaster.ca">
+    Team 9 3A04
+  </author>
+</widget>
