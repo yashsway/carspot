@@ -1,0 +1,20 @@
+{
+  "name": "module-name",
+  "version": "10.3.1",
+  "description": "An example module to illustrate the usage of a package.json",
+  "author": "Your Name <you.name@example.org>",
+  "keywords": [
+    "nodejitsu",
+    "example",
+    "browsenpm"
+  ],
+  "dependencies": {
+    "tabris": "^1.7.0"
+  },
+  "devDependencies": {},
+  "preferGlobal": true,
+  "private": true,
+  "publishConfig": {},
+  "analyze": true,
+  "license": "MIT"
+}
