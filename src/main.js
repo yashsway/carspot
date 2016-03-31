@@ -1,87 +1,68 @@
 new tabris.Drawer().append(new tabris.PageSelector());
 
-var page1 = new tabris.Page({
-  title: "Page 1",
+var HomePage = new tabris.Page({
+  title: "Home",
   topLevel: true
 });
 
-// Top level pages can always be accessed in the page selector
-// even if they are not openend
-var page2 = new tabris.Page({
-  title: "Page 2",
+var SearchHistoryPage = new tabris.Page({
+  title: "Previous Searches",
   topLevel: true
 });
 
-var page3 = new tabris.Page({
-  title: "Page 3",
+var HelpPage = new tabris.Page({
+  title: "Help",
   topLevel: true
 });
 
-var page4 = new tabris.Page({
-  title: "Page 4",
-  topLevel: true
-});
-
-var page5 = new tabris.Page({
-  title: "Page 5",
-  topLevel: true
-});
-
-var page6 = new tabris.Page({
-  title: "Page 6",
-  topLevel: true
-});
-
-var page7 = new tabris.Page({
-  title: "Page 7",
-  topLevel: true
-});
-
-var page8 = new tabris.Page({
-  title: "Page 8",
-  topLevel: true
-});
-
-var page9 = new tabris.Page({
-  title: "Page 9",
-  topLevel: true
-});
-
-var page10 = new tabris.Page({
-  title: "Page 10",
-  topLevel: true
-});
+new tabris.Button({
+  layoutData: {centerX: 0, centerY: -140},
+  text: "Search"
+}).on("select", function() {
+	//search
+}).appendTo(HomePage);
 
 new tabris.TextInput({
-  layoutData: {top: 25, left: "20%", right: "20%"},
-  message: "default"
-}).appendTo(page1);
+  layoutData: {centerX:0,centerY:-90,width:200,height:30},
+  message: "Car Type"
+}).on("accept", function(widget, text) {
+	//do something with the text
+}).appendTo(HomePage);
 
-["ascii", "decimal", "number", "numbersAndPunctuation", "phone", "email", "url"].forEach(function(mode) {
-  new tabris.TextInput({
-    layoutData: {top: "prev() 10", left: "20%", right: "20%"},
-    keyboard: mode,
-    message: mode
-  }).appendTo(page1);
-});
+new tabris.TextInput({
+  layoutData: {centerX:0,centerY:-50,width:200,height:30},
+  message: "Origin"
+}).on("accept", function(widget, text) {
+	//do something with the text
+}).appendTo(HomePage);
 
-page1.open();
+new tabris.TextInput({
+  layoutData: {centerX:0,centerY:-10,width:200,height:30},
+  message: "Manufacturer"
+}).on("accept", function(widget, text) {
+	//do something with the text
+}).appendTo(HomePage);
 
-new tabris.ToggleButton({
-  layoutData: {left: 10, top: 10},
-  text: "selected",
-  selection: true
-}).on("change:selection", function(button, selection) {
-  this.set("text", selection ? "selected" : "not selected");
-}).appendTo(page2);
+new tabris.TextInput({
+  layoutData: {centerX:0,centerY:30,width:200,height:30},
+  keyboard: "number",
+  message: "Passenger Capacity"
+}).on("accept", function(widget, text) {
+	//do something with the text
+}).appendTo(HomePage);
 
-var progressBar = new tabris.ProgressBar({
-  layoutData: {left: 15, right: 15, centerY: 0},
-  maximum: 300,
-  selection: 100
-}).appendTo(page3);
 
-setInterval(function() {
-  var selection = progressBar.get("selection") + 1;
-  progressBar.set("selection", selection > 300 ? 0 : selection);
-}, 20);   
+new tabris.TextView({
+  layoutData: {centerY: -100},
+  text: "This is the help page\n wow",
+  alignment: "left"
+}).appendTo(HelpPage);
+
+new tabris.Button({
+  layoutData: {centerX: 0, centerY: 140},
+  text: "Help"
+}).on("select", function() {
+  HelpPage.open();
+}).appendTo(HomePage);
+
+HomePage.open();
