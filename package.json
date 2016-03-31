@@ -9,6 +9,7 @@
     "browsenpm"
   ],
   "dependencies": {
+    "jquery": "^2.2.2",
     "tabris": "^1.7.0"
   },
   "devDependencies": {},
