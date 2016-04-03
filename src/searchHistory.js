@@ -1,5 +1,5 @@
-var history;
-function add(car){
+var history = [];
+function add(var car){
 	if (history.length <5){
 		history.unshift(car);
 	}
@@ -7,6 +7,13 @@ function add(car){
 		history.pop();
 		history.unshift(car);
 	}
+}
+function displayHistory(){
+	var text;
+	for(i = 0; i < history.length; i++){
+		text += (i+1) + ". " + history[i] + "<br>";
+	}
+	return text;
 }
 function test(name){
 	return "Hello, " + name + "!";
