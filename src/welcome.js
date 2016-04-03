@@ -20,3 +20,5 @@ new tabris.TextView({
 WelcomePage.apply({
   "TextView": {font: "54px Arial, sans-serif", textColor: "#333"},
 });
+
+return WelcomePage;
