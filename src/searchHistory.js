@@ -1,5 +1,5 @@
 public class searchHistory{
-	var history;
+	var history = [];
 	function add(var car){
 		if (history.length <5){
 			history.unshift(car);
@@ -9,5 +9,11 @@ public class searchHistory{
 			history.unshift(car);
 		}
 	}
-	//do we need function to output the cars?
+	function displayHistory(){
+		var text;
+		for(i = 0; i < history.length; i++){
+			text += (i+1) + ". " + history[i] + "<br>";
+		}
+		return text;
+	}
 }
