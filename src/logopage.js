@@ -1,5 +1,5 @@
 //Logo PAGE (EXPERT 2)
-var LogoPage = new tabris.Page({
+var LogoPage = module.exports = new tabris.Page({
   title: "Logo ID",
   topLevel: true
 });

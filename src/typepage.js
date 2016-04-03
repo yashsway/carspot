@@ -1,5 +1,5 @@
 //TYPE PAGE (EXPERT 1)
-var TypePage = new tabris.Page({
+var TypePage = module.exports = new tabris.Page({
   title: "Type ID",
   topLevel: true
 });

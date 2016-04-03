@@ -1,6 +1,6 @@
 //VERIFICATION PAGE
 
-var VerifyPage = new tabris.Page({
+var VerifyPage = module.exports = new tabris.Page({
   title: "Verify ID",
   topLevel: true
 });

@@ -1,5 +1,5 @@
 // HOME PAGE
-var HomePage = new tabris.Page({
+var HomePage = module.exports = new tabris.Page({
   title: "Home",
   topLevel: true
 });

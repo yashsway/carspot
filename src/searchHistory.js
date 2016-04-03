@@ -19,7 +19,7 @@ function test(name){
 	return "Hello, " + name + "!";
 }
 // SEARCH HISTORY PAGE
-var SearchHistoryPage = new tabris.Page({
+var SearchHistoryPage = module.exports = new tabris.Page({
   title: "Previous Searches",
   topLevel: true
 });

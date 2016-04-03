@@ -1,5 +1,5 @@
 //PASSENGER PAGE (EXPERT 4)
-var PassengerPage = new tabris.Page({
+var PassengerPage = module.exports = new tabris.Page({
   title: "Passengers ID",
   topLevel: true
 });

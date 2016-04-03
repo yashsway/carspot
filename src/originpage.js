@@ -1,5 +1,5 @@
 //Origin PAGE (EXPERT 3)
-var OriginPage = new tabris.Page({
+var OriginPage = module.exports = new tabris.Page({
   title: "Origin ID",
   topLevel: true
 });

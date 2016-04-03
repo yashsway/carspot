@@ -5,6 +5,6 @@ require("./logopage.js");
 require("./originpage.js");
 require("./typepage.js");
 require("./verificationpage.js");
-require("./searchHistory.js");
+require("./searchhistory.js");
 
 new tabris.Drawer().append(new tabris.PageSelector());

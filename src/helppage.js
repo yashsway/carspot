@@ -1,5 +1,5 @@
 //HELP PAGE
-var HelpPage = new tabris.Page({
+var HelpPage = module.exports = new tabris.Page({
   title: "Help",
   topLevel: true
 });
