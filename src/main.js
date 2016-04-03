@@ -95,7 +95,15 @@ var TypePage = new tabris.Page({
   topLevel: true
 });
 
-new tabris.TextView({
+new tabris.Button({
+  layoutData: {centerX: 0, centerY: -100, width: 150},
+  text: "Test"
+}).on("select", function() {
+  var t = test("Yash");
+  sample.set("text",t);
+}).appendTo(HomePage);
+
+var sample = new tabris.TextView({
   layoutData: {centerX: 0, centerY: 0},
   text: "This is the type page\n wow",
   alignment: "center"
