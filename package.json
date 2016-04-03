@@ -1,21 +1,22 @@
 {
   "name": "module-name",
   "version": "10.3.1",
-  "description": "An example module to illustrate the usage of a package.json",
-  "author": "Your Name <you.name@example.org>",
+  "description": "An app that helps you identify cars on the road and find the nearest place to buy one",
+  "author": "By Yash, David, Sharon, Cole and Abhijit",
   "keywords": [
-    "nodejitsu",
-    "example",
-    "browsenpm"
+    "cars",
+    "carspot",
+    "mcmaster",
+    "identifier",
+    "search"
   ],
   "dependencies": {
     "jquery": "^2.2.2",
+    "require": "^2.4.20",
     "tabris": "^1.7.0"
   },
+  "main": "src/main.js",
   "devDependencies": {},
-  "preferGlobal": true,
   "private": true,
-  "publishConfig": {},
-  "analyze": true,
   "license": "MIT"
 }
