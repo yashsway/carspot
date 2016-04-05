@@ -1,4 +1,4 @@
-public class expert {
+public class expert { //TODO: will have to code according to whether data is hardcoded into arrays or if the expert pulls required attributes from a database
 	var active = false;
 	var carOrigins = {{"Honda Civic", "Japanese"},{"Honda Accord", "Japanese"},{"Honda CR-V","Japanese"}}
 	function setActive() {
