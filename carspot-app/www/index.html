@@ -28,17 +28,17 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-app="home">
+<body ng-app="home" ng-controller="homeCtrl">
 
     <ion-pane>
         <ion-header-bar class="bar bar-header bar-light">
             <h1 class="title">CarSpot</h1>
         </ion-header-bar>
         <ion-content>
-            <button class="button button-positive cool" id="home">
+            <button class="button button-positive cool" id="home" ng-click="displayMessage()">
                 Search
             </button>
-
+            <p>{{message}}</p>
             <div class="p+">
                 <lx-button lx-type="raised">Button</lx-button>
                 <lx-button lx-type="flat">Button</lx-button>
