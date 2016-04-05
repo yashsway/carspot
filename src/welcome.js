@@ -1,3 +1,4 @@
+var HomePage = require("./homepage");
 // WELCOME PAGE
 var WelcomePage = module.exports = new tabris.Page({
   title: "CarSpot",
@@ -20,3 +21,4 @@ new tabris.TextView({
 WelcomePage.apply({
   "TextView": {font: "54px Arial, sans-serif", textColor: "#333"},
 });
+WelcomePage.open();

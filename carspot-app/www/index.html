@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" href="./lib/lumx/dist/lumx.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!--Include jQuery before ionic bundle so angular uses jquery instead of jqLite-->
+    <script src="./lib/jquery/dist/jquery.js"></script>
+    <!-- ionic/angularjs js -->
+    <script src="./lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="home">
+
+    <ion-pane>
+        <ion-header-bar class="bar bar-header bar-light">
+            <h1 class="title">CarSpot</h1>
+        </ion-header-bar>
+        <ion-content>
+            <button class="button button-positive cool" id="home">
+                Search
+            </button>
+
+            <div class="p+">
+                <lx-button lx-type="raised">Button</lx-button>
+                <lx-button lx-type="flat">Button</lx-button>
+                <lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button>
+                <lx-button lx-type="icon"><i class="mdi mdi-plus"></i></lx-button>
+            </div>
+        </ion-content>
+    </ion-pane>
+    <script src="./lib/velocity/velocity.js"></script>
+    <script src="./lib/moment/min/moment-with-locales.js"></script>
+    <!--    <script src="./lib/angular/angular.js"></script>-->
+    <script src="./lib/lumx/dist/lumx.js"></script>
+</body>
+
+</html>
