@@ -36,7 +36,7 @@ public class carSearchControl{
 				}
 			}
 		}
-		else (logoExpert.isActive()) {
+		else {
 			var originCars = originExpert.carResults(origin);
 			var numPassCars = passengerExpert.carResults(numPass);
 			var typeCars = typeExpert.carResults(type);
