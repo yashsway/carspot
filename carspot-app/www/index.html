@@ -7,7 +7,9 @@
     <title>CarSpot</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="./lib/lumx/dist/lumx.css">-->
+    <link rel="stylesheet" href="./lib/lumx/dist/lumx.css">
+    <link rel="stylesheet" href="./lib/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="./lib/mdi/css/materialdesignicons.min.css.map">
 
     <!--Web Fonts-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -36,51 +38,83 @@
 <body ng-app="home" ng-controller="homeCtrl">
 
     <ion-pane>
-        <ion-header-bar class="bar bar-header bar-light">
+        <ion-header-bar class="bar bar-header bar-dark">
             <h1 class="title">CarSpot</h1>
         </ion-header-bar>
         <ion-content>
             <div class="row block">
-                <div class="col-offset-33">
-                    <ul class="progress-tabs">
-                        <li class="active">Type</li>
-                        <li>Logo</li>
-                        <li>Passengers</li>
-                    </ul>
+                <div class="col">
+                    <div class="content">
+                        <ul class="progress-tabs">
+                            <li class="active">Type</li>
+                            <li>Logo</li>
+                            <li>Passengers</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="row block">
-                <div ng-controller="AlertDemoCtrl">
-                    <script type="text/ng-template" id="alert.html">
-                        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
-                            <div ng-transclude></div>
+                <div class="col">
+                    <div class="p+" flex-container="row" flex-gutter="24" flex-wrap>
+                        <div flex-item="12">
+                            <span class="fs-title display-block mb">Search History</span>
+
+                            <div class="divider divider--dark"></div>
+
+                            <ul class="list mt++">
+                                <li class="list-row list-row--has-separator">
+                                    <div class="list-row__primary">
+                                        <lx-icon lx-id="send" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
+                                    </div>
+
+                                    <div class="list-row__content">
+                                        <span>Single-line item</span>
+                                    </div>
+                                </li>
+                                <li class="list-row list-row--has-separator">
+                                    <div class="list-row__primary">
+                                        <lx-icon lx-id="pencil" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
+                                    </div>
+
+                                    <div class="list-row__content">
+                                        <span>Single-line item</span>
+                                    </div>
+                                </li>
+                                <li class="list-row list-row--has-separator">
+                                    <div class="list-row__primary">
+                                        <lx-icon lx-id="bell" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
+                                    </div>
+
+                                    <div class="list-row__content">
+                                        <span>Single-line item</span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </script>
-
-                    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
-                    <uib-alert template-url="uib/template/alert/alert.html">A happy alert!</uib-alert>
-                    <button type="button" class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+                    </div>
                 </div>
-            </div>
-            <div class="row block">
-                <div class="tabs tabs-icon-top platform-android">
-                    <a class="tab-item">
-                        <i class="icon ion-home"></i> Home
-                    </a>
-                    <a class="tab-item">
-                        <i class="icon ion-android-search"></i> Search
-                    </a>
-                    <a class="tab-item">
-                        <i class="icon ion-gear-a"></i> Settings
-                    </a>
-                </div>
-            </div>
+                <div class="row block">
+                    <div class="col">
+                        <ion-tabs class="tabs-icon-top tabs-dark">
+                            <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+                                <ion-nav-view name="home-tab"></ion-nav-view>
+                            </ion-tab>
 
+                            <ion-tab title="Search" icon="ion-android-search" href="#/tab/about">
+                                <ion-nav-view name="about-tab"></ion-nav-view>
+                            </ion-tab>
+
+                            <ion-tab title="Settings" icon="ion-gear-a" ui-sref="tabs.contact">
+                                <ion-nav-view name="contact-tab"></ion-nav-view>
+                            </ion-tab>
+                        </ion-tabs>
+                    </div>
+                </div>
         </ion-content>
     </ion-pane>
     <script src="./lib/velocity/velocity.js"></script>
     <script src="./lib/moment/min/moment-with-locales.js"></script>
-    <!--    <script src="./lib/lumx/dist/lumx.js"></script>-->
+    <script src="./lib/lumx/dist/lumx.js"></script>
 </body>
 
 </html>

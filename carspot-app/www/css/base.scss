@@ -12,6 +12,12 @@ $tertiary-blue-grey-variant: #2B2D3B;
 $tertiary-dark-grey: #8D99AE;
 $tertiary-light-grey: #D8DBE2;
 
+// Font Set
+@font-face {
+    font-family: 'mdi';
+    src:url(../lib/mdi/fonts/materialdesignicons-webfont.woff) format('woff'),url(../lib/mdi/fonts/materialdesignicons-webfont.woff2) format('woff2');
+}
+
 /* Breakpoints */
 @mixin bp-large {
   @media only screen and (min-width: 1200px) {

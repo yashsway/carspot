@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var homePage = angular.module('home', ['ionic','ui.bootstrap'])
+var homePage = angular.module('home', ['ionic','ui.bootstrap','lumx'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,26 +22,25 @@ var homePage = angular.module('home', ['ionic','ui.bootstrap'])
     }
   });
 });
-homePage.config(['$ionicConfigProvider', function($ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position('bottom'); // other values: top
-
-}]);
+homePage.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('top');
+});
 homePage.controller('homeCtrl',function($scope){
     $scope.displayMessage = function(){
         $scope.message = 'Welcome to CarSpot!';
     }
 });
-homePage.controller('AlertDemoCtrl', function ($scope) {
-  $scope.alerts = [
-    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-  ];
-
-  $scope.addAlert = function() {
-    $scope.alerts.push({msg: 'Another alert!'});
-  };
-
-  $scope.closeAlert = function(index) {
-    $scope.alerts.splice(index, 1);
-  };
-});
+//homePage.controller('AlertDemoCtrl', function ($scope) {
+//  $scope.alerts = [
+//    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+//    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+//  ];
+//
+//  $scope.addAlert = function() {
+//    $scope.alerts.push({msg: 'Another alert!'});
+//  };
+//
+//  $scope.closeAlert = function(index) {
+//    $scope.alerts.splice(index, 1);
+//  };
+//});
