@@ -22,7 +22,10 @@ var homePage = angular.module('home', ['ionic','lumx'])
     }
   });
 });
+homePage.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
 
+}]);
 homePage.controller('homeCtrl',function($scope){
     $scope.displayMessage = function(){
         $scope.message = 'Welcome to CarSpot!';
