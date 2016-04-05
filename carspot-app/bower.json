@@ -1,10 +1,12 @@
 {
-  "name": "carspot-app",
-  "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
-  },
-  "dependencies": {
-    "lumx": "^0.3.96"
-  }
+    "name": "carspot-app",
+    "private": "true",
+    "devDependencies": {
+        "ionic": "driftyco/ionic-bower#1.2.4"
+    },
+    "dependencies": {
+        "lumx": "^0.3.96",
+        "mdi": "^1.5.54",
+        "bourbon": "^4.2.6"
+    }
 }

@@ -35,15 +35,9 @@
             <h1 class="title">CarSpot</h1>
         </ion-header-bar>
         <ion-content>
-            <button class="button button-positive cool" id="home" ng-click="displayMessage()">
-                Search
-            </button>
             <p>{{message}}</p>
             <div class="p+">
-                <lx-button lx-type="raised">Button</lx-button>
-                <lx-button lx-type="flat">Button</lx-button>
-                <lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button>
-                <lx-button lx-type="icon"><i class="mdi mdi-plus"></i></lx-button>
+                <lx-button lx-type="raised" ng-click="displayMessage()">Start</lx-button>
             </div>
         </ion-content>
     </ion-pane>
