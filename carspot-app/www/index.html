@@ -4,26 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>CarSpot</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link rel="stylesheet" href="./lib/lumx/dist/lumx.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="./lib/lumx/dist/lumx.css">-->
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!--Web Fonts-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!--    <link href="css/style.css" rel="stylesheet">-->
+    <!--    IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above-->
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    <!--UI Bootstrap CSS-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--Custom CSS-->
+    <link href="css/home.css" rel="stylesheet">
 
     <!--Include jQuery before ionic bundle so angular uses jquery instead of jqLite-->
     <script src="./lib/jquery/dist/jquery.js"></script>
-    <!-- ionic/angularjs js -->
+    <!-- MAIN Ionic/Angular BUNDLE, DO NOT REMOVE -->
     <script src="./lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
+    <!--UI Bootstrap Scripts-->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
 </head>
@@ -35,48 +40,47 @@
             <h1 class="title">CarSpot</h1>
         </ion-header-bar>
         <ion-content>
-            <div class="nav-tabs">
-                <ul>
-                    <li>Type</li>
-                    <li>Logo</li>
-                    <li>Passengers</li>
-                </ul>
-            </div>
-            <div class="divider divider--dark"></div>
-            <p>{{message}}</p>
-            <div class="content">
-                <div class="tc-white-1 p+" flex-container="row" flex-column="12">
-                    <div flex-item="3">
-                        <div class="p+ bgc-red-500">[flex-item="3"]</div>
-                    </div>
-                    <div flex-item="5">
-                        <div class="p+ bgc-blue-500">[flex-item="5"]</div>
-                    </div>
-                    <div flex-item="4">
-                        <div class="p+ bgc-green-500">[flex-item="4"]</div>
-                    </div>
+            <div class="row block">
+                <div class="col-offset-33">
+                    <ul class="progress-tabs">
+                        <li class="active">Type</li>
+                        <li>Logo</li>
+                        <li>Passengers</li>
+                    </ul>
                 </div>
             </div>
-            <div class="main-wrapper">
+            <div class="row block">
+                <div ng-controller="AlertDemoCtrl">
+                    <script type="text/ng-template" id="alert.html">
+                        <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+                            <div ng-transclude></div>
+                        </div>
+                    </script>
 
+                    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+                    <uib-alert template-url="uib/template/alert/alert.html">A happy alert!</uib-alert>
+                    <button type="button" class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+                </div>
             </div>
-            <div class="tabs tabs-icon-top platform-android">
-                <a class="tab-item">
-                    <i class="icon ion-home"></i> Home
-                </a>
-                <a class="tab-item">
-                    <i class="icon ion-android-search"></i> Search
-                </a>
-                <a class="tab-item">
-                    <i class="icon ion-gear-a"></i> Settings
-                </a>
+            <div class="row block">
+                <div class="tabs tabs-icon-top platform-android">
+                    <a class="tab-item">
+                        <i class="icon ion-home"></i> Home
+                    </a>
+                    <a class="tab-item">
+                        <i class="icon ion-android-search"></i> Search
+                    </a>
+                    <a class="tab-item">
+                        <i class="icon ion-gear-a"></i> Settings
+                    </a>
+                </div>
             </div>
+
         </ion-content>
     </ion-pane>
     <script src="./lib/velocity/velocity.js"></script>
     <script src="./lib/moment/min/moment-with-locales.js"></script>
-    <!--    <script src="./lib/angular/angular.js"></script>-->
-    <script src="./lib/lumx/dist/lumx.js"></script>
+    <!--    <script src="./lib/lumx/dist/lumx.js"></script>-->
 </body>
 
 </html>
