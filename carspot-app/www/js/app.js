@@ -56,11 +56,7 @@ base.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) 
         });
     $urlRouterProvider.otherwise("/tab/home");
 });
-base.controller('homeCtrl', function ($scope) {
-    $scope.displayMessage = function () {
-        $scope.message = 'Welcome to CarSpot!';
-    }
-});
+
 
 base.controller('helpAccordionData', ['$scope', function ($scope) {
     $scope.articles = [
@@ -92,11 +88,12 @@ base.controller('carProperties', ['carSearch',function (carSearch) {
     this.usrManf = "";
     this.usrPassengers = 0;
     this.usrOrigin = "";
+    this.results = [];
     this.getQuery = function getQuery() {
-        return JSON.stringify({"type":this.usrType,"manufacturer":this.usrManf,"passengers":this.usrPassengers,"origin":this.usrOrigin});
+        return {"type":this.usrType,"manufacturer":this.usrManf,"passengers":this.usrPassengers,"origin":this.usrOrigin};
     };
     this.getResult = function getResult(){
-        return carSearch.search(this.usrType,this.usrManf,this.usrPassengers,this.usrOrigin);
+        this.results = carSearch.search(this.usrType,this.usrManf,this.usrPassengers,this.usrOrigin);
     }
 }]);
 

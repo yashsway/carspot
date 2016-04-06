@@ -93,7 +93,7 @@
                                 Type
                             </div>
                             <select ng-model="carProp.usrType">
-                                <option selected>Select</option>
+                                <option selected></option>
                                 <option ng-repeat="typ in carProp.type">{{typ}}</option>
                             </select>
                         </label>
@@ -103,7 +103,7 @@
                                 Manufacturer
                             </div>
                             <select ng-model="carProp.usrManf">
-                                <option selected>Select</option>
+                                <option selected></option>
                                 <option ng-repeat="manf in carProp.manufacturer">{{manf}}</option>
                             </select>
                         </label>
@@ -113,7 +113,7 @@
                                 Passenger Capacity
                             </div>
                             <select ng-model="carProp.usrPassengers">
-                                <option selected>Select</option>
+                                <option selected></option>
                                 <option ng-repeat="pass in carProp.passengers">{{pass}}</option>
                             </select>
                         </label>
@@ -123,20 +123,32 @@
                                 Origin
                             </div>
                             <select ng-model="carProp.usrOrigin">
-                                <option selected>Select</option>
+                                <option selected></option>
                                 <option ng-repeat="origin in carProp.origin">{{origin}}</option>
                             </select>
                         </label>
 
                     </div>
                     <div>
-                        <a class="button button-balanced">Search</a>
-                        <p id="searchResult">
-                        {{carProp.getQuery()}}
-                        </p>
-                        <p id="finalResult">
-                            {{carProp.getResult()}}
-                        </p>
+                        <div class="content">
+                            <a class="button button-balanced" ng-click="query = carProp.getQuery();carProp.getResult()">Search</a>
+                        </div>
+                        <br/>
+                        <div style="position: relative;">
+                        </div>
+                        <div>
+                           <p>{{query.type}}</p>
+                            <div class="p+">
+                                <span class="fs-display-2 display-block">Results</span>
+                            </div>
+                        </div>
+                        <div class="card" ng-repeat="result in carProp.results">
+                            <div class="item item-text-wrap">
+                                <p id="finalResult">
+                                    {{result}}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </ion-content>
             </ion-view>
