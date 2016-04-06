@@ -1,0 +1,24 @@
+@import 'base.scss';
+
+.block {
+    display: block;
+    position: relative;
+    height: auto;
+}
+.progress-tabs {
+    list-style: none;
+    padding: 10px;
+    margin-left: 50px;
+    color: black;
+    border: 0;
+    border-color: none;
+    cursor: pointer;
+}
+.progress-tabs > li {
+    display: inline-block;
+    border-bottom: 3px solid $tertiary-light-grey;
+    margin: 5px 20px 5px 5px;
+}
+.progress-tabs li.active {
+    border-color: $primary-contrast-color;
+}

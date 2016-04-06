@@ -67,7 +67,7 @@
             <ion-view view-title="home">
                 <ion-content class="padding">
                     <p>
-                        <a class="button button-balanced" href="#/tab/search">Search</a>
+                        <a class="button button-balanced" href="#/tab/search">Search Page</a>
                     </p>
                 </ion-content>
             </ion-view>
@@ -75,14 +75,61 @@
         <script id="templates/search.html" type="text/ng-template">
             <ion-view view-title="search">
                 <ion-content class="padding">
-                    <p>Banging your head against a wall uses 150 calories an hour.</p>
-                    <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
-                    <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its right side when intoxicated.</p>
-                    <p>A cockroach will live nine days without it's head, before it starves to death.</p>
-                    <p>Polar bears are left handed.</p>
-                    <p>
+                	<div class="list">
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                           	 Type
+                        </div>
+                         <select>
+                             <option selected>Select</option>
+                             <option>Sedan</option>
+                         </select>
+                     </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Manufacturer
+                        </div>
+                         <select>
+                             <option selected>Select</option>
+                             <option>Toyota</option>
+                             <option>Ford</option>
+                         </select>
+                     </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Passenger Capacity
+                        </div>
+                         <select>
+                             <option selected>Select</option>
+                             <option >1</option>
+                             <option >2</option>
+                             <option >3</option>
+                             <option >4</option>
+                             <option >5</option>
+                             <option >6</option>
+                             <option >7</option>
+                             <option >8</option>
+                         </select>
+                     </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Origin
+                        </div>
+                         <select>
+                         	 <option selected>Select</option>
+                             <option>North America</option>
+                             <option>Europe</option>
+                             <option>Red</option>
+                         </select>
+                     </label>
+                     
+                </div>
                         <p>
-                            <a class="button button-balanced" href="#/tab/home">Home</a>
+                            <a class="button button-balanced" >Search</a>
                         </p>
                 </ion-content>
             </ion-view>

@@ -53,6 +53,22 @@ homePage.controller('homeCtrl', function ($scope) {
         $scope.message = 'Welcome to CarSpot!';
     }
 });
+
+
+
+angular.module('CarProperties', [])
+.controller('CarPropertiesController', function() {
+  this.type;
+  this.manufacturer;
+  this.passengers;
+  this.origin;
+
+  function createJSON() {
+    //create the JSON
+  };
+});
+
+
 //homePage.controller('AlertDemoCtrl', function ($scope) {
 //  $scope.alerts = [
 //    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
