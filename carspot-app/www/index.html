@@ -137,16 +137,23 @@
                         <div style="position: relative;">
                         </div>
                         <div>
-                           <p>{{query.type}}</p>
                             <div class="p+">
                                 <span class="fs-display-2 display-block">Results</span>
                             </div>
                         </div>
                         <div class="card" ng-repeat="result in carProp.results">
                             <div class="item item-text-wrap">
-                                <p id="finalResult">
-                                    {{result}}
-                                </p>
+                                <div class="row">
+                                    <div class="col col-80">
+                                        <p id="finalResult">
+                                            {{result}}
+                                        </p>
+                                    </div>
+                                    <div class="col col-80">
+                                        <button class="button icon ion-earth"></button>
+                                        <button class="button ion-android-compass"></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

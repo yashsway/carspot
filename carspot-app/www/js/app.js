@@ -90,6 +90,8 @@ base.controller('carProperties', ['carSearch',function (carSearch) {
     this.usrOrigin = "";
     this.results = [];
     this.getQuery = function getQuery() {
+        //TEST: Checking search query parameters
+        console.log("Search Query:"+JSON.stringify({"type":this.usrType,"manufacturer":this.usrManf,"passengers":this.usrPassengers,"origin":this.usrOrigin}));
         return {"type":this.usrType,"manufacturer":this.usrManf,"passengers":this.usrPassengers,"origin":this.usrOrigin};
     };
     this.getResult = function getResult(){
