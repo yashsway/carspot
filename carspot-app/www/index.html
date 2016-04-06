@@ -104,8 +104,7 @@
                             </div>
                             <select>
                                 <option selected>Select</option>
-                                <option>Toyota</option>
-                                <option>Ford</option>
+                                <option ng-repeat="man in carProp.manufacturer">{{man}}</option>
                             </select>
                         </label>
 
