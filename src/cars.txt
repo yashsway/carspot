@@ -1,0 +1,40 @@
+Volkswagon:
+Tiguan, SUV, 5, German
+Jetta, Sedan, 5, German
+Eos, Coupe, 4, German
+
+Honda:
+Civic, Sedan, 5, Japanese
+Accord, Coupe, 5, Japanese
+CR-V, SUV, 5, Japanese
+
+Ford:
+Focus, Sedan, 5, American
+Escape, SUV, 5, American
+Mustang, Coupe, 4, American
+Explorer, SUV, 7, American
+
+Chevrolet:
+Cruze, Sedan, 5, American
+Silverado, Truck, 5, American
+Traverse, SUV, 7, American
+
+Toyota:
+Corolla, Sedan, 5, Japanese
+Tundra, Truck, 3, Japanese
+Sequoia, SUV, 8, Japanese
+
+Dodge:
+Charger, Sedan, 5, American
+Journey, SUV, 7, American
+Grand Caravan, Minivan, 8, American
+
+Mercedes-Benz:
+CLS, Coupe, 5, German
+CLA, Sedan, 5, German
+GLA, SUV, 7, German
+
+Hyundai:
+Sonata, Sedan, 5, Korean
+Tucson, SUV, 5, Korean
+Veloster, Coupe, 5, Korean

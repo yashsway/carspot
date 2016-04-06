@@ -61,6 +61,7 @@ homePage.controller('homeCtrl', function ($scope) {
         $scope.message = 'Welcome to CarSpot!';
     }
 });
+
 homePage.controller('helpAccordionData', function($scope){
     $scope.articles = [
         {
@@ -80,6 +81,18 @@ homePage.controller('helpAccordionData', function($scope){
             content: "By Yash, Cole, Sharon, David and Abhijit."
         }
     ];
+});
+
+angular.module('CarProperties', [])
+.controller('CarPropertiesController', function() {
+  this.type;
+  this.manufacturer;
+  this.passengers;
+  this.origin;
+
+  function createJSON() {
+    //create the JSON
+  };
 });
 //homePage.controller('AlertDemoCtrl', function ($scope) {
 //  $scope.alerts = [

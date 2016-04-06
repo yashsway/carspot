@@ -160,4 +160,4 @@ function printToConsole(arr){
 	}
 }
 
-printToConsole(searchCar("Japanese","","SUV","Honda"));
+printToConsole(searchCar("American","","Sedan","Chevrolet"));
