@@ -35,7 +35,7 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-app="home" ng-controller="homeCtrl">
+<body ng-app="base">
 
     <ion-pane>
         <ion-header-bar class="bar bar-header bar-dark">
@@ -56,7 +56,7 @@
                     </ion-nav-view>
                 </ion-tab>
 
-                <ion-tab title="Help" icon="ion-gear-a" href="#/tab/help">
+                <ion-tab title="Help" icon="ion-help-buoy" href="#/tab/help">
                     <ion-nav-view name="help-tab">
 
                     </ion-nav-view>
@@ -66,71 +66,82 @@
         <script id="templates/home.html" type="text/ng-template">
             <ion-view view-title="Carspot: Home">
                 <ion-content class="padding">
-                    <p>
-                        <a class="button button-balanced" href="#/tab/search">Search Page</a>
-                    </p>
+                    <div class="row responsive-sm">
+                        <div class="col">
+                            <p>stuff</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="content">
+                                <button class="button button-balanced" href="#/tab/home">
+                                    <i class="ion-loop">&nbsp;&nbsp;</i>Refresh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </ion-content>
             </ion-view>
         </script>
         <script id="templates/search.html" type="text/ng-template">
             <ion-view view-title="Carspot: Search">
                 <ion-content class="padding">
-                	<div class="list">
+                    <div class="list">
 
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                           	 Type
-                        </div>
-                         <select>
-                             <option selected>Select</option>
-                             <option>Sedan</option>
-                         </select>
-                     </label>
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Type
+                            </div>
+                            <select>
+                                <option selected>Select</option>
+                                <option>Sedan</option>
+                            </select>
+                        </label>
 
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Manufacturer
-                        </div>
-                         <select>
-                             <option selected>Select</option>
-                             <option>Toyota</option>
-                             <option>Ford</option>
-                         </select>
-                     </label>
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Manufacturer
+                            </div>
+                            <select>
+                                <option selected>Select</option>
+                                <option>Toyota</option>
+                                <option>Ford</option>
+                            </select>
+                        </label>
 
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Passenger Capacity
-                        </div>
-                         <select>
-                             <option selected>Select</option>
-                             <option >1</option>
-                             <option >2</option>
-                             <option >3</option>
-                             <option >4</option>
-                             <option >5</option>
-                             <option >6</option>
-                             <option >7</option>
-                             <option >8</option>
-                         </select>
-                     </label>
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Passenger Capacity
+                            </div>
+                            <select>
+                                <option selected>Select</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </label>
 
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Origin
-                        </div>
-                         <select>
-                         	 <option selected>Select</option>
-                             <option>North America</option>
-                             <option>Europe</option>
-                             <option>Red</option>
-                         </select>
-                     </label>
-                     
-                </div>
-                        <p>
-                            <a class="button button-balanced" >Search</a>
-                        </p>
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Origin
+                            </div>
+                            <select>
+                                <option selected>Select</option>
+                                <option>North America</option>
+                                <option>Europe</option>
+                                <option>Red</option>
+                            </select>
+                        </label>
+
+                    </div>
+                    <p>
+                        <a class="button button-balanced">Search</a>
+                    </p>
                 </ion-content>
             </ion-view>
         </script>

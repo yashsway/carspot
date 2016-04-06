@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var homePage = angular.module('home', ['ionic', 'ui.bootstrap', 'lumx'])
+var base = angular.module('base', ['ionic', 'ui.bootstrap', 'lumx'])
 
-homePage.run(function ($ionicPlatform) {
+base.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,7 +22,7 @@ homePage.run(function ($ionicPlatform) {
         }
     });
 });
-homePage.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+base.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     $stateProvider
         .state('tabs', {
@@ -56,13 +56,13 @@ homePage.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvid
         });
     $urlRouterProvider.otherwise("/tab/home");
 });
-homePage.controller('homeCtrl', function ($scope) {
+base.controller('homeCtrl', function ($scope) {
     $scope.displayMessage = function () {
         $scope.message = 'Welcome to CarSpot!';
     }
 });
 
-homePage.controller('helpAccordionData', function($scope){
+base.controller('helpAccordionData', function($scope){
     $scope.articles = [
         {
             title: "How to search for cars",
@@ -83,8 +83,7 @@ homePage.controller('helpAccordionData', function($scope){
     ];
 });
 
-angular.module('CarProperties', [])
-.controller('CarPropertiesController', function() {
+base.controller('CarPropertiesController', function() {
   this.type;
   this.manufacturer;
   this.passengers;
