@@ -1,6 +1,6 @@
 //copyright and develop team info
-var HelpPage = module.exports = new tabris.Page({
-  title: "Help",
+var CopyrightPage = module.exports = new tabris.Page({
+  title: "Copyright",
   topLevel: true
 });
 
@@ -8,16 +8,16 @@ var HelpPage = module.exports = new tabris.Page({
 new tabris.TextView({
   layoutData: {centerX: 0,centerY: -100},
   
-  text: "This is the help page\n"
+  text: "This is the copyright page\n"
   + "Developed by Team 09 3A04\n McMaster University"
   
   alignment: "left"
-}).appendTo(HelpPage);
+}).appendTo(CopyrightPage);
 
 
 new tabris.Button({
   layoutData: {centerX: 0, centerY: 100, width: 150},
-  text: "Back to Home page"
+  text: "Back to Help page"
 }).on("select", function() {
   HelpPage.open();
-}).appendTo(HelpPage);
+}).appendTo(CopyrightPage);
