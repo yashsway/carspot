@@ -56,7 +56,7 @@
                     </ion-nav-view>
                 </ion-tab>
 
-                <ion-tab title="Help" icon="ion-gear-a" ui-sref="#/tab/help">
+                <ion-tab title="Help" icon="ion-gear-a" href="#/tab/help">
                     <ion-nav-view name="help-tab">
 
                     </ion-nav-view>
@@ -64,7 +64,7 @@
             </ion-tabs>
         </script>
         <script id="templates/home.html" type="text/ng-template">
-            <ion-view view-title="home">
+            <ion-view view-title="Carspot: Home">
                 <ion-content class="padding">
                     <p>
                         <a class="button button-balanced" href="#/tab/search">Search</a>
@@ -73,7 +73,7 @@
             </ion-view>
         </script>
         <script id="templates/search.html" type="text/ng-template">
-            <ion-view view-title="search">
+            <ion-view view-title="Carspot: Search">
                 <ion-content class="padding">
                     <p>Banging your head against a wall uses 150 calories an hour.</p>
                     <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
@@ -87,43 +87,17 @@
                 </ion-content>
             </ion-view>
         </script>
-                    <!--<div class="p+" flex-container="row" flex-gutter="24" flex-wrap>
-                        <div flex-item="12">
-                            <span class="fs-title display-block mb">Search History</span>
-
-                            <div class="divider divider--dark"></div>
-
-                            <ul class="list mt++">
-                                <li class="list-row list-row--has-separator">
-                                    <div class="list-row__primary">
-                                        <lx-icon lx-id="send" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
-                                    </div>
-
-                                    <div class="list-row__content">
-                                        <span>Mazda 3 2015, 4 Passengers, Hatchback</span>
-                                    </div>
-                                </li>
-                                <li class="list-row list-row--has-separator">
-                                    <div class="list-row__primary">
-                                        <lx-icon lx-id="pencil" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
-                                    </div>
-
-                                    <div class="list-row__content">
-                                        <span>Honda Civic 2012, 5 Passengers, Sedan</span>
-                                    </div>
-                                </li>
-                                <li class="list-row list-row--has-separator">
-                                    <div class="list-row__primary">
-                                        <lx-icon lx-id="bell" lx-size="s" lx-color="grey" lx-type="flat"><i class="mdi mdi-crop-square"></i></lx-icon>
-                                    </div>
-
-                                    <div class="list-row__content">
-                                        <span>Honda Odyssey 2016, 8 Passengers, Minivan</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
--->
+        <script id="templates/help.html" type="text/ng-template">
+            <ion-view view-title="Carspot: Help" ng-controller="helpAccordionData as data">
+                <ion-content class="padding">
+                    <uib-accordion close-others="oneAtATime">
+                        <uib-accordion-group heading="{{article.title}}" ng-repeat="article in articles">
+                            {{article.content}}
+                        </uib-accordion-group>
+                    </uib-accordion>
+                </ion-content>
+            </ion-view>
+        </script>
     </ion-pane>
     <script src="./lib/velocity/velocity.js"></script>
     <script src="./lib/moment/min/moment-with-locales.js"></script>

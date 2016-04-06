@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var homePage = angular.module('home', ['ionic', 'ui.bootstrap', 'lumx'])
 
-.run(function ($ionicPlatform) {
+homePage.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -39,10 +39,18 @@ homePage.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvid
             }
         })
         .state('tabs.search', {
-            url: "/search",
+            url: '/search',
             views: {
                 'search-tab': {
-                    templateUrl: "templates/search.html"
+                    templateUrl: 'templates/search.html'
+                }
+            }
+        })
+        .state('tabs.help', {
+            url: "/help",
+            views: {
+                'help-tab': {
+                    templateUrl: 'templates/help.html'
                 }
             }
         });
@@ -52,6 +60,26 @@ homePage.controller('homeCtrl', function ($scope) {
     $scope.displayMessage = function () {
         $scope.message = 'Welcome to CarSpot!';
     }
+});
+homePage.controller('helpAccordionData', function($scope){
+    $scope.articles = [
+        {
+            title: "How to search for cars",
+            content: "First do this, then do this."
+        },
+        {
+            title: "How search history works",
+            content: "And do more of this."
+        },
+        {
+            title: "How to send feedback",
+            content: "Select the feedback tab from navigation bar located at bottom of this app."
+        },
+        {
+            title: "About",
+            content: "By Yash, Cole, Sharon, David and Abhijit."
+        }
+    ];
 });
 //homePage.controller('AlertDemoCtrl', function ($scope) {
 //  $scope.alerts = [
