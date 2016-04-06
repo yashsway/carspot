@@ -62,7 +62,7 @@ base.controller('homeCtrl', function ($scope) {
     }
 });
 
-base.controller('helpAccordionData', ['$scope',function($scope){
+base.controller('helpAccordionData', ['$scope', function ($scope) {
     $scope.articles = [
         {
             title: "How to search for cars",
@@ -83,29 +83,30 @@ base.controller('helpAccordionData', ['$scope',function($scope){
     ];
 }]);
 
-//base.controller('CarPropertiesController', function() {
-//  this.type = ["Sedan","Hatchback","Minivan"];
-//  this.manufacturer = ["cool","test"];
-//  this.passengers;
-//  this.origin;
-//
-//  function createJSON() {
-//    //create the JSON
-//  };
-//});
+base.controller('carProperties', ['carSearch',function (carSearch) {
+    this.type = ["Sedan", "Hatchback", "Minivan", "SUV", "Coupe", "Truck"];
+    this.manufacturer = ["Volkswagen", "Honda", "Ford", "Chevrolet", "Toyota", "Dodge", "Mercedes-Benz", "Hyundai"];
+    this.passengers = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+    this.origin = ["American", "German", "Japanese", "Korean"];
+    this.usrType = "";
+    this.usrManf = "";
+    this.usrPassengers = 0;
+    this.usrOrigin = "";
+    this.getQuery = function getQuery() {
+        return JSON.stringify({"type":this.usrType,"manufacturer":this.usrManf,"passengers":this.usrPassengers,"origin":this.usrOrigin});
+    };
+    this.getResult = function getResult(){
+        return carSearch.search(this.usrType,this.usrManf,this.usrPassengers,this.usrOrigin);
+    }
+}]);
 
-base.controller('CarPropertiesController', function () {
-    this.type = ["Sedan","Hatchback","Minivan"];
-    this.manufacturer = ["cool","test"];
-    this.passengers = "";
-    this.origin = "";
-
-    this.result = function CarSearch() {
+base.factory('carSearch', ['carSelector', function (carSelector) {
+    var search = function search(usrType,usrManf,usrPassengers,usrOrigin) {
         //sharons algo
-        var array1 = carSelector.getType(this.type);
-        var array2 = carSelector.getManu(this.manufacturer);
-        var array3 = carSelector.getPass(this.passengers);
-        var array4 = carSelector.getOrigin(this.origin);
+        var array1 = carSelector.getType(usrType);
+        var array2 = carSelector.getManu(usrManf);
+        var array3 = carSelector.getPass(usrPassengers);
+        var array4 = carSelector.getOrigin(usrOrigin);
 
         var results = [];
         for (i = 0; i < array1.length; i++) {
@@ -118,22 +119,20 @@ base.controller('CarPropertiesController', function () {
                     }
                 }
             }
-
-            return results;
         }
+        return results;
     };
-
-    function createJSON() {
-        //create the JSON
-    };
-});
+    return {
+        search: search
+    }
+}]);
 
 base.factory('carSelector', function () {
     //database
-    var carTypeArray = [["Honda Civic", "Sedan"], ["Honda Accord", "Coupe"], ["Honda CRV", "SUV"], ["Volkswagon Tiguan", "SUV"], ["Volkswagon Jetta", "Sedan"], ["Volkswagon Eos", "Coupe"], ["Ford Focus", "Sedan"], ["Ford Escape", "SUV"], ["Ford Mustang", "Coupe"], ["Ford Explorer", "SUV"], ["Chevrolet Cruze", "Sedan"], ["Chevrolet Silverado", "Truck"], ["Chevrolet Traverse", "SUV"], ["Toyota Corolla", "Sedan"], ["Toyota Tundra", "Truck"], ["Toyota Sequoia", "SUV"], ["Dodge Charger", "Sedan"], ["Dodge Journey", "SUV"], ["Dodge Grand Caravan", "Minivan"], ["Mercedez Benz CLS", "Coupe"], ["Mercedez Benz CLA", "Sedan"], ["Mercedez Benz GLA", "SUV"], ["Hyundai Sonata", "Sedan"], ["Hyundai Tucson", "SUV"], ["Hyundai Veloster", "Coupe"]];
-    var carManufacturerArray = [["Honda Civic", "Honda"], ["Honda Accord", "Honda"], ["Honda CRV", "Honda"], ["Volkswagon Tiguan", "Volkswagon"], ["Volkswagon Jetta", "Volkswagon"], ["Volkswagon Eos", "Volkswagon"], ["Ford Focus", "Ford"], ["Ford Escape", "Ford"], ["Ford Mustang", "Ford"], ["Ford Explorer", "Ford"], ["Chevrolet Cruze", "Chevrolet"], ["Chevrolet Silverado", "Chevrolet"], ["Chevrolet Traverse", "Chevrolet"], ["Toyota Corolla", "Toyota"], ["Toyota Tundra", "Toyota"], ["Toyota Sequoia", "Toyota"], ["Dodge Charger", "Dodge"], ["Dodge Journey", "Dodge"], ["Dodge Grand Caravan", "Dodge"], ["Mercedez Benz CLS", "Mercedez Benz"], ["Mercedez Benz CLA", "Mercedez Benz"], ["Mercedez Benz GLA", "Mercedez Benz"], ["Hyundai Sonata", "Hyundai"], ["Hyundai Tucson", "Hyundai"], ["Hyundai Veloster", "Hyundai"]];
-    var carPassengersArray = [["Honda Civic", "5"], ["Honda Accord", "5"], ["Honda CRV", "5"], ["Volkswagon Tiguan", "5"], ["Volkswagon Jetta", "5"], ["Volkswagon Eos", "4"], ["Ford Focus", "5"], ["Ford Escape", "5"], ["Ford Mustang", "4"], ["Ford Explorer", "7"], ["Chevrolet Cruze", "5"], ["Chevrolet Silverado", "5"], ["Chevrolet Traverse", "7"], ["Toyota Corolla", "5"], ["Toyota Tundra", "3"], ["Toyota Sequoia", "8"], ["Dodge Charger", "5"], ["Dodge Journey", "7"], ["Dodge Grand Caravan", "8"], ["Mercedez Benz CLS", "5"], ["Mercedez Benz CLA", "5"], ["Mercedez Benz GLA", "7"], ["Hyundai Sonata", "5"], ["Hyundai Tucson", "5"], ["Hyundai Veloster", "5"]];
-    var carOriginArray = [["Honda Civic", "Japanese"], ["Honda Accord", "Japanese"], ["Honda CRV", "Japanese"], ["Volkswagon Tiguan", "German"], ["Volkswagon Jetta", "German"], ["Volkswagon Eos", "German"], ["Ford Focus", "American"], ["Ford Escape", "American"], ["Ford Mustang", "American"], ["Ford Explorer", "American"], ["Chevrolet Cruze", "American"], ["Chevrolet Silverado", "American"], ["Chevrolet Traverse", "American"], ["Toyota Corolla", "Japanese"], ["Toyota Tundra", "Japanese"], ["Toyota Sequoia", "Japanese"], ["Dodge Charger", "American"], ["Dodge Journey", "American"], ["Dodge Grand Caravan", "American"], ["Mercedez Benz CLS", "German"], ["Mercedez Benz CLA", "German"], ["Mercedez Benz GLA", "German"], ["Hyundai Sonata", "Korean"], ["Hyundai Tucson", "Korean"], ["Hyundai Veloster", "Korean"]];
+    var carTypeArray = [["Honda Civic", "Sedan"], ["Honda Accord", "Coupe"], ["Honda CRV", "SUV"], ["Volkswagen Tiguan", "SUV"], ["Volkswagen Jetta", "Sedan"], ["Volkswagen Eos", "Coupe"], ["Ford Focus", "Sedan"], ["Ford Escape", "SUV"], ["Ford Mustang", "Coupe"], ["Ford Explorer", "SUV"], ["Chevrolet Cruze", "Sedan"], ["Chevrolet Silverado", "Truck"], ["Chevrolet Traverse", "SUV"], ["Toyota Corolla", "Sedan"], ["Toyota Tundra", "Truck"], ["Toyota Sequoia", "SUV"], ["Dodge Charger", "Sedan"], ["Dodge Journey", "SUV"], ["Dodge Grand Caravan", "Minivan"], ["Mercedez Benz CLS", "Coupe"], ["Mercedez Benz CLA", "Sedan"], ["Mercedez Benz GLA", "SUV"], ["Hyundai Sonata", "Sedan"], ["Hyundai Tucson", "SUV"], ["Hyundai Veloster", "Coupe"]];
+    var carManufacturerArray = [["Honda Civic", "Honda"], ["Honda Accord", "Honda"], ["Honda CRV", "Honda"], ["Volkswagen Tiguan", "Volkswagen"], ["Volkswagen Jetta", "Volkswagen"], ["Volkswagen Eos", "Volkswagen"], ["Ford Focus", "Ford"], ["Ford Escape", "Ford"], ["Ford Mustang", "Ford"], ["Ford Explorer", "Ford"], ["Chevrolet Cruze", "Chevrolet"], ["Chevrolet Silverado", "Chevrolet"], ["Chevrolet Traverse", "Chevrolet"], ["Toyota Corolla", "Toyota"], ["Toyota Tundra", "Toyota"], ["Toyota Sequoia", "Toyota"], ["Dodge Charger", "Dodge"], ["Dodge Journey", "Dodge"], ["Dodge Grand Caravan", "Dodge"], ["Mercedez Benz CLS", "Mercedez Benz"], ["Mercedez Benz CLA", "Mercedez Benz"], ["Mercedez Benz GLA", "Mercedez Benz"], ["Hyundai Sonata", "Hyundai"], ["Hyundai Tucson", "Hyundai"], ["Hyundai Veloster", "Hyundai"]];
+    var carPassengersArray = [["Honda Civic", "5"], ["Honda Accord", "5"], ["Honda CRV", "5"], ["Volkswagen Tiguan", "5"], ["Volkswagen Jetta", "5"], ["Volkswagen Eos", "4"], ["Ford Focus", "5"], ["Ford Escape", "5"], ["Ford Mustang", "4"], ["Ford Explorer", "7"], ["Chevrolet Cruze", "5"], ["Chevrolet Silverado", "5"], ["Chevrolet Traverse", "7"], ["Toyota Corolla", "5"], ["Toyota Tundra", "3"], ["Toyota Sequoia", "8"], ["Dodge Charger", "5"], ["Dodge Journey", "7"], ["Dodge Grand Caravan", "8"], ["Mercedez Benz CLS", "5"], ["Mercedez Benz CLA", "5"], ["Mercedez Benz GLA", "7"], ["Hyundai Sonata", "5"], ["Hyundai Tucson", "5"], ["Hyundai Veloster", "5"]];
+    var carOriginArray = [["Honda Civic", "Japanese"], ["Honda Accord", "Japanese"], ["Honda CRV", "Japanese"], ["Volkswagen Tiguan", "German"], ["Volkswagen Jetta", "German"], ["Volkswagen Eos", "German"], ["Ford Focus", "American"], ["Ford Escape", "American"], ["Ford Mustang", "American"], ["Ford Explorer", "American"], ["Chevrolet Cruze", "American"], ["Chevrolet Silverado", "American"], ["Chevrolet Traverse", "American"], ["Toyota Corolla", "Japanese"], ["Toyota Tundra", "Japanese"], ["Toyota Sequoia", "Japanese"], ["Dodge Charger", "American"], ["Dodge Journey", "American"], ["Dodge Grand Caravan", "American"], ["Mercedez Benz CLS", "German"], ["Mercedez Benz CLA", "German"], ["Mercedez Benz GLA", "German"], ["Hyundai Sonata", "Korean"], ["Hyundai Tucson", "Korean"], ["Hyundai Veloster", "Korean"]];
 
     //david's algo
     var getType = function (inType) {
@@ -158,8 +157,8 @@ base.factory('carSelector', function () {
 
     var getPass = function (inPass) {
         var passArray = [];
-        for (i = 0; i < carPassengerArray.length; i++) {
-            if (inPass == carPassengerArray[i][1]) {
+        for (i = 0; i < carPassengersArray.length; i++) {
+            if (inPass == carPassengersArray[i][1]) {
                 passArray.push(carPassengersArray[i][0]);
             }
         }
@@ -177,10 +176,10 @@ base.factory('carSelector', function () {
     };
 
     return {
-        typeArray: getType,
-        originArray: getOrigin,
-        manuArray: getManu,
-        passArray: getPass
+        getType: getType,
+        getOrigin: getOrigin,
+        getManu: getManu,
+        getPass: getPass
     };
 });
 

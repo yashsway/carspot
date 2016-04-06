@@ -84,7 +84,7 @@
             </ion-view>
         </script>
         <script id="templates/search.html" type="text/ng-template">
-            <ion-view view-title="Carspot: Search" ng-controller="CarPropertiesController as carProp">
+            <ion-view view-title="Carspot: Search" ng-controller="carProperties as carProp">
                 <ion-content class="padding">
                     <div class="list">
 
@@ -92,9 +92,9 @@
                             <div class="input-label">
                                 Type
                             </div>
-                            <select>
+                            <select ng-model="carProp.usrType">
                                 <option selected>Select</option>
-                                <option ng-repeat="c in carProp.type">{{c}}</option>
+                                <option ng-repeat="typ in carProp.type">{{typ}}</option>
                             </select>
                         </label>
 
@@ -102,9 +102,9 @@
                             <div class="input-label">
                                 Manufacturer
                             </div>
-                            <select>
+                            <select ng-model="carProp.usrManf">
                                 <option selected>Select</option>
-                                <option ng-repeat="man in carProp.manufacturer">{{man}}</option>
+                                <option ng-repeat="manf in carProp.manufacturer">{{manf}}</option>
                             </select>
                         </label>
 
@@ -112,16 +112,9 @@
                             <div class="input-label">
                                 Passenger Capacity
                             </div>
-                            <select>
+                            <select ng-model="carProp.usrPassengers">
                                 <option selected>Select</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
+                                <option ng-repeat="pass in carProp.passengers">{{pass}}</option>
                             </select>
                         </label>
 
@@ -129,18 +122,22 @@
                             <div class="input-label">
                                 Origin
                             </div>
-                            <select>
+                            <select ng-model="carProp.usrOrigin">
                                 <option selected>Select</option>
-                                <option>North America</option>
-                                <option>Europe</option>
-                                <option>Red</option>
+                                <option ng-repeat="origin in carProp.origin">{{origin}}</option>
                             </select>
                         </label>
 
                     </div>
-                    <p>
+                    <div>
                         <a class="button button-balanced">Search</a>
-                    </p>
+                        <p id="searchResult">
+                        {{carProp.getQuery()}}
+                        </p>
+                        <p id="finalResult">
+                            {{carProp.getResult()}}
+                        </p>
+                    </div>
                 </ion-content>
             </ion-view>
         </script>
