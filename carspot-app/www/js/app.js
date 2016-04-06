@@ -62,7 +62,7 @@ base.controller('homeCtrl', function ($scope) {
     }
 });
 
-base.controller('helpAccordionData', function($scope){
+base.controller('helpAccordionData', ['$scope',function($scope){
     $scope.articles = [
         {
             title: "How to search for cars",
@@ -81,10 +81,10 @@ base.controller('helpAccordionData', function($scope){
             content: "By Yash, Cole, Sharon, David and Abhijit."
         }
     ];
-});
+}]);
 
 base.controller('CarPropertiesController', function() {
-  this.type;
+  this.type = ["Sedan","Hatchback","Minivan"];
   this.manufacturer;
   this.passengers;
   this.origin;
