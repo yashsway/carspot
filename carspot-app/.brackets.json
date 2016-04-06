@@ -1,0 +1,10 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/platforms/android/assets/www/lib/jquery/src/css/var/cssExpand.js",
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/platforms/android/assets/www/lib/jquery/src/core/support.js",
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/platforms/android/assets/www/lib/jquery/src/css/var/isHidden.js",
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/geocode/www/js/geocode.js",
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/platforms/android/assets/www/lib/jquery/src/core/parseHTML.js",
+        "C:/Users/Sharon/Desktop/3A04/carspot/carspot-app/platforms/android/assets/www/lib/jquery/src/core/ready.js"
+    ]
+}
