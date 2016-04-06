@@ -14,6 +14,26 @@ angular.module('starter.directives', [])
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map($element[0], mapOptions);
+          //new code
+    map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+          //$.getJSON(json, function(json1) {
+
+         //     $.each(json1, function(key, data) {
+
+                 var latLng = new google.maps.LatLng(data.lat, data.lng);
+
+                 var marker = new google.maps.Marker({
+                      position:   latLng,
+                      map:        map,
+                      icon:       icon,
+                      title:      data.title
+                  });
+
+
+
+
+          //new co
 
         $scope.onCreate({map: map});
 
