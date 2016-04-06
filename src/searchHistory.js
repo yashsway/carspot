@@ -9,9 +9,9 @@ function add(car){
 	}
 }
 function displayHistory(){	//quick display method, may or may not be needed
-	var text;
+	var text = "";
 	for(i = 0; i < history.length; i++){
-		text += (i+1) + ". " + history[i] + "<br>";
+		text += (i+1) + ". " + history[i] + " ";
 	}
 	return text;
 }
