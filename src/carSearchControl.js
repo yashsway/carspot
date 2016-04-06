@@ -1,4 +1,5 @@
 function searchCar(origin, numPass, type, logo){
+	setExperts(origin, numPass, type, logo);	//set experts for search algorithm.
 	if (originExpert.isActive()!=true) {	//if origin expert is inactive, the other three are active
 		var numPassCars = passengerExpert.carResults(numPass);	//pass in the variables to each expert and receive array of cars with that attribute
 		var typeCars = typeExpert.carResults(type);
@@ -79,11 +80,11 @@ function setExperts(origin, numPass, type, logo){	//sets active experts for sear
 }
 function findCars(array1, array2, array3){	//takes the 3 arrays of cars from experts and finds cars common to all 3 arrays
 	var results = [];
-	for (i=0; i<array1.length(); i++){
-		for(j=0; j<array2.length(); j++){
-			if (array1[i].equals(array2[j])){
-				for(k=0; k<array3.length(); k++){
-					if(array1[i].equals(array3[k])){
+	for (i=0; i<array1.length; i++){
+		for(j=0; j<array2.length; j++){
+			if (array1[i]==array2[j]){
+				for(k=0; k<array3.length; k++){
+					if(array1[i]==array3[k]){
 						results.push(array3[k]);
 					}
 				}
@@ -98,11 +99,3 @@ function findCars(array1, array2, array3){	//takes the 3 arrays of cars from exp
 	}
 	return false;
 }*/
-
-function printToConsole(arr){
-	for(i = 0; i < arr.length; i++){
-		console.log(arr[i]);
-	}
-}
-
-printToConsole(searchCar("American","5","Truck",""));

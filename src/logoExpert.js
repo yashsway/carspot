@@ -1,12 +1,12 @@
 var active = false;
-var carMakes = [["Honda Civic", "Honda"],["Honda Accord", "Honda"],["Honda CR-V","Honda"],["Volkswagon Tiguan","Volkswagon"],["Volkswagon Jetta","Volkswagon"],["Volkswagon Eos","Volkswagon"],["Ford Focus","Ford"],["Ford Escape","Ford"],["Ford Mustang","Ford"],["Ford Explorer","Ford"],["Chevrolet Cruze","Chevrolet"],["Chevrolet Silverado","Chevrolet"],["Chevrolet Traverse","Chevrolet"],["Toyota Corolla","Toyota"],["Toyota Tundra","Toyota"],["Toyota Sequoia","Toyota"],["Dodge Charger","Dodge"],["Dodge Journey","Dodge"],["Dodge Grand Caravan","Dodge"],["Mercedez Benz CLS","Mercedez Benz"],["Mercedez Benz CLA","Mercedez Benz"],["Mercedez Benz GLA","Mercedez Benz"],["Hyundai Sonata","Hyundai"],["Hyundai Tucson","Hyundai"],["Hyundai Veloster","Hyundai"]];
+var carMakes = [["Honda Civic", "Honda"],["Honda Accord", "Honda"],["Honda CRV","Honda"],["Volkswagon Tiguan","Volkswagon"],["Volkswagon Jetta","Volkswagon"],["Volkswagon Eos","Volkswagon"],["Ford Focus","Ford"],["Ford Escape","Ford"],["Ford Mustang","Ford"],["Ford Explorer","Ford"],["Chevrolet Cruze","Chevrolet"],["Chevrolet Silverado","Chevrolet"],["Chevrolet Traverse","Chevrolet"],["Toyota Corolla","Toyota"],["Toyota Tundra","Toyota"],["Toyota Sequoia","Toyota"],["Dodge Charger","Dodge"],["Dodge Journey","Dodge"],["Dodge Grand Caravan","Dodge"],["Mercedez Benz CLS","Mercedez Benz"],["Mercedez Benz CLA","Mercedez Benz"],["Mercedez Benz GLA","Mercedez Benz"],["Hyundai Sonata","Hyundai"],["Hyundai Tucson","Hyundai"],["Hyundai Veloster","Hyundai"]];
 function setActive() {
 	active = true;
 }
 function setInactive() {
 	active = false;
 }
-function isInactive() {
+function isActive() {
 	return active;
 }
 function carResults (att){
